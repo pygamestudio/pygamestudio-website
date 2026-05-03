@@ -1,0 +1,26 @@
+---
+const isHome = Astro.url.pathname === "/";
+---
+
+{isHome && (
+  <footer class="site-footer">
+    <div>Pygame Studio 2026 © Copyrights All Reserved</div>
+    <div class="footer-mt-1 footer-text-sm footer-opacity-70">
+      Open Source & Free Forever
+    </div>
+
+    <style>
+      .site-footer {
+        margin-top: 4rem;
+        padding: 2rem 1rem;
+        text-align: center;
+        border-top: 1px solid var(--sl-color-gray-5);
+        color: var(--sl-color-gray-2);
+        font-size: 0.9rem;
+      }
+      .footer-mt-1 { margin-top: 0.3rem; }
+      .footer-text-sm { font-size: 0.85rem; }
+      .footer-opacity-70 { opacity: 0.7; }
+    </style>
+  </footer>
+)}
