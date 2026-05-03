@@ -8,17 +8,23 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Pygame Studio',
-			favicon: './src/assets/images/favicon.ico',
+			favicon: 'favicon.ico',
 			logo: {
 				src: './src/assets/images/logo.png',
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/pygamestudio/pygamestudio'}],
-			sidebar: [
-				{ label: 'Tutorial', autogenerate: { directory: 'tutorial' }}
-			],
 			components: {
 				Footer: './src/components/ConditionalFooter.astro',
 			},
+			sidebar: [
+				{
+					label: 'Tutorial',
+					items: [
+						{ label: 'Installation', slug: 'tutorial/installation' },
+						{ label: 'Create a project', slug: 'tutorial/create_a_project' },
+					],
+				}
+			],
 		}),
 	],
 });
