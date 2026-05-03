@@ -15,7 +15,6 @@
 </div>
 
 <br>
-<br>
 
 <div align="center"><h1>Pygame Studio Official Website</h1></div>
 
