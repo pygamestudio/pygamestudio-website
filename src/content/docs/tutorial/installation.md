@@ -5,7 +5,7 @@ title: Installation
 This guide will walk you through installing **Pygame Studio** on your system.
 
 ## Prerequisites
-Ensure you have **Python 3.8 or higher** installed on your machine.
+Ensure you have **Python 3.9 or higher** installed on your machine.
 
 You can check your Python version by running this command in your terminal:
 
