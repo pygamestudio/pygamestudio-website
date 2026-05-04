@@ -33,14 +33,11 @@ This command will automatically download and install the latest stable version o
 
 ## Verify the Installation
 After installation, run the following command in your terminal:
+
 ```bash
 pygamestudio
 ```
 If the Pygame Studio editor launches successfully, your installation is complete.
-
-<img src="https://i-blog.csdnimg.cn/direct/2824782c7b4d4f2fb9f5650bab6ce87e.png" width="600"/>
-
-<br>
 
 ## Next Steps
 Once installed, you’re ready to start creating projects with Pygame Studio!
