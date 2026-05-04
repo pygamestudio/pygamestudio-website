@@ -37,7 +37,10 @@ After installation, run the following command in your terminal:
 ```bash
 pygamestudio
 ```
+
 If the Pygame Studio editor launches successfully, your installation is complete.
+
+![Pygame Studio Dashboard](../../../assets/images/doc/dashboard.png)
 
 ## Next Steps
 Once installed, you’re ready to start creating projects with Pygame Studio!
