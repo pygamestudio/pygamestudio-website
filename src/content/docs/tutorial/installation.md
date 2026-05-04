@@ -17,10 +17,19 @@ python --version
 Open your **terminal** (Command Prompt, PowerShell, or macOS/Linux Terminal) and run the following **pip command**:
 
 ```bash
-pip install pygamestudio
+pip install --upgrade pygamestudio
 ```
 
+> **Note:** Since current releases are development versions, please include --upgrade to ensure pip installs the latest development version instead of an older cached one.
+
 This command will automatically download and install the latest stable version of Pygame Studio and all required dependencies.
+
+| Name | Version |
+|-----|-----|
+| pygame-ce | >=2.5.6 |
+| PySide6 | >=6.10.0 | 
+| platformdirs | >=3.5.1 | 
+| numpy | >=1.26.0 | 
 
 ## Verify the Installation
 After installation, run the following command in your terminal:
@@ -29,6 +38,9 @@ pygamestudio
 ```
 If the Pygame Studio editor launches successfully, your installation is complete.
 
+<img src="https://i-blog.csdnimg.cn/direct/2824782c7b4d4f2fb9f5650bab6ce87e.png" width="600"/>
+
+<br>
 
 ## Next Steps
 Once installed, you’re ready to start creating projects with Pygame Studio!
