@@ -2,7 +2,7 @@
 title: Installation
 ---
 
-This guide will walk you through installing **Pygame Studio** on your system.
+This guide will walk you through installing **Pygame Studio** and verifying the installation on your system.
 
 ## Prerequisites
 Ensure you have **Python 3.9 or higher** installed on your machine.
@@ -14,7 +14,7 @@ python --version
 ```
 
 ## Install Pygame Studio
-Open your **terminal** (Command Prompt, PowerShell, or macOS/Linux Terminal) and run the following **pip command**:
+Open your **terminal** and run the following **pip command**:
 
 ```bash
 pip install --upgrade pygamestudio
@@ -30,12 +30,19 @@ This command will automatically download and install the latest stable version o
 | PySide6 | >=6.10.0 | 
 | platformdirs | >=3.5.1 | 
 | numpy | >=1.26.0 | 
+| pyinstaller | >=6.18.0 | 
 
 ## Verify the Installation
 After installation, run the following command in your terminal:
 
 ```bash
 pygamestudio
+```
+
+Or use the shortcut command:
+
+```bash
+pygs
 ```
 
 If the Pygame Studio editor launches successfully, your installation is complete.

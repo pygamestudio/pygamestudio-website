@@ -16,12 +16,37 @@ export default defineConfig({
 			components: {
 				Footer: './src/components/ConditionalFooter.astro',
 			},
+			defaultLocale: 'root',
+			locales: {
+				root: {
+					label: 'English',
+					lang: 'en'
+				},
+				'zh-cn': {
+					label: '简体中文',
+					lang: 'zh-CN'
+				}
+			},
 			sidebar: [
 				{
 					label: 'Tutorial',
+					translations: {
+						'zh-CN': '快速上手',
+					},
 					items: [
-						{ label: 'Installation', slug: 'tutorial/installation' },
-						{ label: 'Create a project', slug: 'tutorial/create_a_project' },
+						{ slug: 'tutorial/installation' },
+						{ slug: 'tutorial/create_a_project' },
+						// { slug: 'tutorial/create_an_object' },
+					],
+				},
+				{
+					label: 'Updates & Support',
+					translations: {
+						'zh-CN': '更新与支持',
+					},
+					items: [
+						{ slug: 'updates_and_support/release_notes' },
+						{ slug: 'updates_and_support/support_pygame_studio' },
 					],
 				}
 			],
