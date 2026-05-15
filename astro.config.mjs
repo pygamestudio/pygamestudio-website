@@ -9,7 +9,7 @@ export default defineConfig({
 		starlight({
 			title: 'Pygame Studio',
 			favicon: 'favicon.ico',
-			logo: {
+				logo: {
 				src: './src/assets/images/logo.png',
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/pygamestudio/pygamestudio'}],

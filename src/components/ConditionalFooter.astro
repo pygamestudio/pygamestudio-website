@@ -1,14 +1,14 @@
 ---
-const isHome = Astro.url.pathname === "/";
+import Pagination from 'virtual:starlight/components/Pagination';
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/zh-cn" || Astro.url.pathname === "/zh-cn/";
 ---
 
-{isHome && (
+{isHome ? (
   <footer class="site-footer">
     <div>Pygame Studio 2026 © Copyrights All Reserved</div>
     <div class="footer-mt-1 footer-text-sm footer-opacity-70">
       Open Source & Free Forever
     </div>
-
     <style>
       .site-footer {
         margin-top: 4rem;
@@ -23,4 +23,6 @@ const isHome = Astro.url.pathname === "/";
       .footer-opacity-70 { opacity: 0.7; }
     </style>
   </footer>
+):(
+    <Pagination />
 )}
