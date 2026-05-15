@@ -8,9 +8,8 @@ It aims to fill the gap of lacking a professional visual game engine in Python, 
 Every contribution keeps this project updated, improves features, optimizes user experience, and lets more people enjoy game creation.
 
 ## Ways to Support
-<div style="display:flex;"><img src="../../../src/assets/images/doc/ko-fi.png" width=30 />&nbsp;<strong>Ko-fi:&nbsp;</strong> <a target="_blank" href="https://ko-fi.com/pygamestudio">https://ko-fi.com/pygamestudio</a></div>
-
-<div style="display:flex;"><img src="../../../src/assets/images/doc/afdian.png" width=30 />&nbsp;<strong>Afdian:&nbsp;</strong> <a target="_blank" href="https://afdian.com/a/pygamestudio">https://afdian.com/a/pygamestudio</a></div>
+- Ko-fi: https://ko-fi.com/pygamestudio
+- Afdian: https://afdian.com/a/pygamestudio
 
 ---
 
