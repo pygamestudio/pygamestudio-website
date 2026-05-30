@@ -13,4 +13,4 @@ Every contribution keeps this project updated, improves features, optimizes user
 
 ---
 
-Sincere thanks to every sponsor and community supporter! ✨
+Sincere thanks to every sponsor and community supporter! ❤️

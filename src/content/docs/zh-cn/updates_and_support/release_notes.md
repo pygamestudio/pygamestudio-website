@@ -1,8 +1,28 @@
 ---
 title: 更新日志
 ---
+## [v1.0.0.dev3](https://pypi.org/project/pygamestudio/1.0.0.dev3/) - 2026.05.30
+### 新增功能
+- 新增浅色主题
+- 新增图片对象
+- 场景编辑器加入多选框功能
+- 文本对象现已支持中文正常显示
+- 新建项目后，项目目录自动生成 font 文件夹，并内置 SIMHEI.ttf 字体文件
 
-## [v1.0.0.dev2](https://pypi.org/project/pygamestudio/1.0.0.dev2/)
+### 优化改进
+- 每条日志输出前增加时间戳
+- 优化属性编辑器内不可编辑调节框的样式
+- 修复 Linux、MacOS 平台下 QComboBox 样式异常问题
+
+### 问题修复
+- 修复线条位置变动后，Gizmo 位置未同步更新的问题
+- 修复 Linux 系统窗口无法拖动移动的问题
+- 修复 `get_object_by_path` 接口无法通过路径查找目标对象的 Bug
+- 修复应用打包时进度条回弹的问题
+
+<br>
+
+## [v1.0.0.dev2](https://pypi.org/project/pygamestudio/1.0.0.dev2/) - 2026.05.15
 ### 新增功能
 - 新增桌面应用一键打包功能，可将项目打包为独立可执行文件，其他用户无需安装 Python 环境即可直接运行游戏
 - 新增线条对象，丰富场景编辑元素
@@ -22,7 +42,7 @@ title: 更新日志
 
 <br>
 
-## [v1.0.0.dev1](https://pypi.org/project/pygamestudio/1.0.0.dev1/)
+## [v1.0.0.dev1](https://pypi.org/project/pygamestudio/1.0.0.dev1/) - 2026.05.05
 ### 新增功能
 - 完成基础可视化编辑界面搭建，包含层级窗口、资源管理窗口、场景编辑窗口、日志输出窗口、属性配置窗口等核心面板
 - 支持创建矩形、椭圆、文本三种基础可编辑对象

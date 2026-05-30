@@ -12,7 +12,10 @@ export default defineConfig({
 				logo: {
 				src: './src/assets/images/logo.png',
 			},
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/pygamestudio/pygamestudio'}],
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/pygamestudio/pygamestudio'},
+				{ icon: 'seti:python', label: 'PyPI', href: 'https://pypi.org/project/pygamestudio/'}
+			],
 			components: {
 				Footer: './src/components/ConditionalFooter.astro',
 			},
