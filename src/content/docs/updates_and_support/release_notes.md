@@ -1,6 +1,23 @@
 ---
 title: Release Notes
 ---
+## [v1.0.0.dev5](https://pypi.org/project/pygamestudio/1.0.0.dev5/) - 2026.06.21
+### New Features
+- Added button object
+- Added shortcuts in property panel to switch among selected objects
+- Added custom color picker with alpha transparent channel support
+
+### Optimizations
+- Refactored template main.py code, built-in lifecycle and event callbacks to simplify development workflow
+- Adjusted Gizmo position to prevent covering object highlight border
+
+<br>
+
+## [v1.0.0.dev4](https://pypi.org/project/pygamestudio/1.0.0.dev4/) - 2026.06.01
+### Bug Fixes
+- Fixed a critical bug in v1.0.0.dev3. [(#1)](https://github.com/pygamestudio/pygamestudio/issues/1)
+
+<br>
 
 ## [v1.0.0.dev3](https://pypi.org/project/pygamestudio/1.0.0.dev3/) - 2026.05.30
 ### New Features

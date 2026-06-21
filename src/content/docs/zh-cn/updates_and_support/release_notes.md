@@ -1,6 +1,24 @@
 ---
 title: 更新日志
 ---
+## [v1.0.0.dev5](https://pypi.org/project/pygamestudio/1.0.0.dev5/) - 2026.06.21
+### 新增功能
+- 新增按钮对象
+- 属性面板新增切换对象的快捷功能
+- 自定义颜色选择器，增加透明通道支持
+
+### 优化调整
+- 调整项目模板 main.py 代码，内置生命周期与事件回调封装，简化游戏开发流程
+- 调整 Gizmo 显示位置，避免遮挡物体高亮边框
+
+<br>
+
+## [v1.0.0.dev4](https://pypi.org/project/pygamestudio/1.0.0.dev4/) - 2026.06.01
+### 问题修复
+- 修复了v1.0.0.dev3版本中的一个严重bug. [(#1)](https://github.com/pygamestudio/pygamestudio/issues/1)
+
+<br>
+
 ## [v1.0.0.dev3](https://pypi.org/project/pygamestudio/1.0.0.dev3/) - 2026.05.30
 ### 新增功能
 - 新增浅色主题
