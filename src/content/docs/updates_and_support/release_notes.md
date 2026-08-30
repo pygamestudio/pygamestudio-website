@@ -1,6 +1,29 @@
 ---
 title: Release Notes
 ---
+## [v1.0.0.dev6](https://pypi.org/project/pygamestudio/1.0.0.dev6/) - 2026.08.29
+### New Features
+- Support attaching scripts to objects for custom logic control. Developers can select and add scripts within the property inspector window
+- Added audio manager
+- New projects include a default audio asset for beginners' learning and testing
+- Added more available interfaces for all scene objects
+
+### Optimizations
+- Improved prompt for unsaved scene changes
+- Game runtime logs are output to the console window in real‑time
+- Optimized project and file deletion logic: deleted projects are moved to recycle bin instead of permanent removal
+
+### Bug Fixes
+- Fixed window resizing bug
+- Fixed undo bug where only a small offset was reverted after moving objects
+- Fixed bug of creating new files under collapsed folders in resource manager
+- Fixed exception bug when Dashboard attempts to delete a non‑existent project
+- Fixed bug where RGB values changed while adjusting hue in color picker
+- Fixed bug that input boxes inside color picker cannot gain input focus
+
+
+<br>
+
 ## [v1.0.0.dev5](https://pypi.org/project/pygamestudio/1.0.0.dev5/) - 2026.06.21
 ### New Features
 - Added button object
