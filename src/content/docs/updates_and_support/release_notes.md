@@ -1,6 +1,20 @@
 ---
 title: Release Notes
 ---
+## [v1.0.0.dev7](https://pypi.org/project/pygamestudio/1.0.0.dev7/) - 2026.09.06
+### New Features
+- Added smart guide lines feature in the scene window
+- Added refresh button in the scene window
+- Added built‑in audio player
+- Added built‑in image editor
+- Added built‑in code editor
+- Added collision detection feature
+
+### Optimizations
+- Optimized marquee‑selection behavior in scene window, Canvas node is excluded from selection
+
+<br>
+
 ## [v1.0.0.dev6](https://pypi.org/project/pygamestudio/1.0.0.dev6/) - 2026.08.29
 ### New Features
 - Support attaching scripts to objects for custom logic control. Developers can select and add scripts within the property inspector window
