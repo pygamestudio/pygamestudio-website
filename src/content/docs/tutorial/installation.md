@@ -30,7 +30,9 @@ This command will automatically download and install the latest stable version o
 | PySide6 | >=6.10.0 | 
 | platformdirs | >=3.5.1 | 
 | numpy | >=1.26.0 | 
-| pyinstaller | >=6.18.0 | 
+| pyinstaller | >=6.18.0 |
+| pymunk | >=7.0 | 
+| pyobfus | >=0.5 | 
 
 ## Verify the Installation
 After installation, run the following command in your terminal:
@@ -47,7 +49,7 @@ pygs
 
 If the Pygame Studio editor launches successfully, your installation is complete.
 
-![Pygame Studio Dashboard](../../../assets/images/doc/dashboard.png)
+![Pygame Studio Dashboard](/images/doc/dashboard.png)
 
 ## Next Steps
 Once installed, you’re ready to start creating projects with Pygame Studio!

@@ -1,0 +1,12 @@
+---
+/**
+ * Starlight's theme select, with the docs version selector in front of it.
+ * Rendered in the upper-right corner of the header on every page; the version
+ * selector itself only appears on documentation pages.
+ */
+import DefaultThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+import VersionSelect from './VersionSelect.astro';
+---
+
+<VersionSelect />
+<DefaultThemeSelect />

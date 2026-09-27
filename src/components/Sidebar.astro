@@ -1,0 +1,38 @@
+---
+/**
+ * Starlight's sidebar, with every link pointing at the docs version the reader
+ * is currently browsing, so opening an archived release never jumps back to the
+ * current docs. `src/data/versions.ts` explains how versions are stored.
+ */
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import { parseDocsPath, versionHref } from '../data/versions';
+
+const { sidebar } = Astro.locals.starlightRoute;
+const { version } = parseDocsPath(Astro.url.pathname);
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+const isCurrent = (href: string) => href.replace(/\/$/, '') === currentPath;
+
+/** Rewrite the configured (version-less) sidebar into the browsed version. */
+function forVersion(entries: typeof sidebar): typeof sidebar {
+	return entries.map((entry) =>
+		entry.type === 'group'
+			? { ...entry, entries: forVersion(entry.entries) }
+			: {
+					...entry,
+					href: versionHref(Astro.url.pathname, version, parseDocsPath(entry.href).page),
+					isCurrent: isCurrent(versionHref(Astro.url.pathname, version, parseDocsPath(entry.href).page)),
+				}
+	);
+}
+---
+
+<SidebarPersister>
+	<SidebarSublist sublist={forVersion(sidebar)} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>

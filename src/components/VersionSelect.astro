@@ -1,0 +1,59 @@
+---
+/**
+ * Docs version selector (upper-right corner of the header, next to the theme
+ * and language selects).
+ *
+ * The current release's docs live at the site root; archived releases live in
+ * folders named after the release, see `src/data/versions.ts`. Switching
+ * versions keeps the reader on the same page whenever that page exists in the
+ * target version.
+ */
+import Select from '@astrojs/starlight/components/Select.astro';
+import { getVersions, parseDocsPath, resolveVersionPage } from '../data/versions';
+
+const { version: activeVersion, page, locale } = parseDocsPath(Astro.url.pathname);
+const t = (en: string, zh: string) => (locale === 'zh-cn' ? zh : en);
+
+/** The selector only makes sense on documentation pages. */
+const inDocs = activeVersion !== '' || /^(tutorial|editor_introduction|api|updates_and_support)(\/|$)/.test(page);
+
+// A folder holding the same release as the root is only listed while the reader
+// is actually inside it, so the same docs are never offered twice.
+const versions = getVersions().filter(
+	(v) => v.slug === '' || !v.isCurrentRelease || v.slug === activeVersion
+);
+const options = versions.map(({ slug, label }) => ({
+	label: slug === '' ? `${t('Latest', '最新版')} (${label})` : label,
+	value: resolveVersionPage(Astro.url.pathname, slug),
+	selected: slug === activeVersion,
+}));
+---
+
+{
+	inDocs && (
+		<starlight-version-select>
+			<Select
+				icon="document"
+				label={t('Select the documentation version', '选择文档版本')}
+				width="9em"
+				options={options}
+			/>
+		</starlight-version-select>
+	)
+}
+
+<style>
+	starlight-version-select {
+		display: flex;
+		align-items: center;
+	}
+</style>
+
+<script>
+	// The option values are URLs: picking a version navigates to that page.
+	for (const select of document.querySelectorAll('starlight-version-select select')) {
+		select.addEventListener('change', () => {
+			if (select instanceof HTMLSelectElement && select.value) location.href = select.value;
+		});
+	}
+</script>

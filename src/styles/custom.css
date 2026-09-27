@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------------------- *
+ * Pygame Studio - homepage extras
+ *
+ * Hero mascot: a gentle floating animation for the snake logo.
+ * ------------------------------------------------------------------------- */
+
+.hero > img {
+	animation: ps-float 7s ease-in-out infinite;
+}
+
+@keyframes ps-float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero > img {
+		animation: none;
+	}
+}
+
+/* ------------------------------------------------------------------------- *
+ * Sidebar extras
+ *
+ * Starlight gives every group label the "large" style, so a nested group (like
+ * "Objects" under "API Reference") comes out bolder and bigger than its sibling
+ * links. Show nested groups with the link style instead.
+ * ------------------------------------------------------------------------- */
+
+.sidebar-content details details .group-label .large {
+	font-size: var(--sl-text-sm);
+	font-weight: 400;
+	color: var(--sl-color-gray-2);
+}
+
+.sidebar-content details details summary:hover .group-label .large,
+.sidebar-content details details summary:focus-visible .group-label .large {
+	color: var(--sl-color-white);
+}

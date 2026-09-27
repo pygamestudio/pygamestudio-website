@@ -1,0 +1,49 @@
+---
+/**
+ * Starlight's page title, with a short notice above it when the reader is
+ * looking at the docs of an archived release.
+ */
+import DefaultPageTitle from '@astrojs/starlight/components/PageTitle.astro';
+import { parseDocsPath, resolveVersionPage } from '../data/versions';
+
+const { version, locale } = parseDocsPath(Astro.url.pathname);
+const t = (en: string, zh: string) => (locale === 'zh-cn' ? zh : en);
+---
+
+{
+	version && (
+		<p class="version-notice">
+			<span>
+				{t('You are reading the docs of', '你正在查看的是')}{' '}
+				<strong>{version}</strong>{' '}
+				{t('— the latest release may behave differently.', '版本的文档 —— 最新版本的行为可能有所不同。')}
+			</span>
+			<a href={resolveVersionPage(Astro.url.pathname, '')}>
+				{t('Switch to the latest version →', '切换到最新版本 →')}
+			</a>
+		</p>
+	)
+}
+
+<DefaultPageTitle />
+
+<style>
+	.version-notice {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		align-items: baseline;
+		margin-bottom: 0.75rem;
+		padding: 0.6rem 0.9rem;
+		border-radius: 0.5rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-inline-start: 4px solid #f6a21b;
+		background: var(--sl-color-gray-6);
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-1);
+	}
+
+	.version-notice a {
+		font-weight: 600;
+	}
+</style>

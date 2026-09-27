@@ -31,6 +31,8 @@ pip install --upgrade pygamestudio
 | platformdirs | >=3.5.1 | 
 | numpy | >=1.26.0 | 
 | pyinstaller | >=6.18.0 | 
+| pymunk | >=7.0 | 
+| pyobfus | >=0.5 | 
 
 ## 验证安装是否成功
 安装完成后，在终端输入以下命令：
@@ -47,7 +49,7 @@ pygs
 
 若 Pygame Studio 编辑器正常启动，说明安装完成。
 
-![Pygame Studio Dashboard](../../../../assets/images/doc/dashboard.png)
+![Pygame Studio Dashboard](/images/doc/dashboard.png)
 
 ## 下一步
 安装完成后，你就可以开始使用 Pygame Studio 创建项目、进行游戏开发了！

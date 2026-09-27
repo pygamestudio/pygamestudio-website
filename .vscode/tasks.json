@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build website",
+			"type": "shell",
+			"command": "cmd /c \"D:\\nodejs\\npm.cmd --prefix d:\\Github\\pygamestudio-website run build\"",
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}
