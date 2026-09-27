@@ -1,6 +1,26 @@
 ---
 title: Release Notes
 ---
+## [v1.0.0](https://pypi.org/project/pygamestudio/1.0.0/) - 2026.09.27
+### New Features
+1. The editor default language automatically follows the system language.
+2. Added new Web platform build function.
+3. Added new AI Assistant.
+4. Added window menu items to toggle visibility of each window.
+5. Added new Block Editor.
+6. Added new Slider object.
+7. Added new ProgressBar object.
+8. Added new Tilemap object and Tilemap Editor.
+9. Added new Text Input object.
+10. Added auto-save project feature while running the game.
+
+### Optimizations
+1. Optimized all window components to support popping up as separate windows.
+2. Optimized desktop application build function.
+3. Scene Editor: Objects can still be displayed when dragged outside the scene view.
+
+<br>
+
 ## [v1.0.0.dev7](https://pypi.org/project/pygamestudio/1.0.0.dev7/) - 2026.09.06
 ### New Features
 - Added smart guide lines feature in the scene window

@@ -1,5 +1,5 @@
 ---
-title: 音频管理器
+title: 音频播放器
 description: 在脚本中播放音效与背景音乐 —— play_sound、play_music、音量与停止播放。
 ---
 
