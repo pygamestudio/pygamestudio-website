@@ -1,5 +1,5 @@
 ---
-title: Audio Player
+title: Audio
 description: Play sound effects and background music from a script — play_sound, play_music, volumes and stopping.
 ---
 

@@ -17,10 +17,8 @@ python --version
 Open your **terminal** and run the following **pip command**:
 
 ```bash
-pip install --upgrade pygamestudio
+pip install pygamestudio
 ```
-
-> **Note:** Since current releases are development versions, please include --upgrade to ensure pip installs the latest development version instead of an older cached one.
 
 This command will automatically download and install the latest stable version of Pygame Studio and all required dependencies.
 

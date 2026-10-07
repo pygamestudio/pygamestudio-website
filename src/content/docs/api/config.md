@@ -8,6 +8,9 @@ description: Read the project settings of a game at runtime — window size, cap
 ### `get_project_config()`
 Returns the whole settings dictionary of the project. Raises `RuntimeError` when `project.pygs` cannot be found or read — this only happens when the file was moved or edited by hand outside the editor. The file lives in the project root; in a [protected build](/tutorial/build_game/) it is encrypted and decrypted on the fly, so reading it works exactly the same.
 
+### `get_project_path()`
+Path of the current project root; `''` when not running inside a project.
+
 ## Settings
 
 ### `asset`

@@ -17,10 +17,8 @@ python --version
 打开终端，执行以下 pip 安装命令：
 
 ```bash
-pip install --upgrade pygamestudio
+pip install pygamestudio
 ```
-
-> **注意：** 目前发布版本均为开发测试版，请务必加上 --upgrade 参数，确保 pip 安装最新开发版，而非本地缓存的旧版本。
 
 执行该命令后，程序会自动下载并安装 Pygame Studio 最新版本，以及所有依赖库。
 

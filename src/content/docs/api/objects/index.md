@@ -18,4 +18,6 @@ description: Every scene object type with its type key and the page documenting 
 | [Slider](/api/objects/slider/) | `SLIDER` | Draggable value control. |
 | [Particle](/api/objects/particle/) | `PARTICLE` | Emitter for sparks, smoke and explosions. |
 | [Frame Sequence](/api/objects/frame_sequence/) | `FRAME_SEQUENCE` | Image-by-image animation. |
+| [Keyframe](/api/objects/keyframe/) | `KEYFRAME` | Timeline animation over position, scale, rotation and color. |
 | [Tile Map](/api/objects/tile_map/) | `TILE_MAP` | Level built from a tileset image. |
+| [Empty Node](/api/objects/node/) | `NODE` | Invisible container that groups children. |

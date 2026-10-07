@@ -25,7 +25,7 @@ The script is named `new.py` by default; rename it to `big_small.py`. Double-cli
 
 Select the rectangle in the scene and look at the **Script Path** row of the Inspector: click the browse icon and pick the file you just created (dropping the `.py` file onto the row works as well). The file name then appears in the row, and the **×** button next to it detaches the script again.
 
-![The Script Path row with an attached script](/images/doc/create_an_object_script.png)
+![The Script Path row with an attached script](/images/doc/create_an_object_script_path.png)
 
 :::tip
 The row turns red when the file behind it cannot be found, usually because the script was moved or renamed in the Asset panel. Pick the file again to fix the reference.

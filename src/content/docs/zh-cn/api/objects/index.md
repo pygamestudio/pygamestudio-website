@@ -18,4 +18,6 @@ description: 所有场景对象类型、类型标识，以及列出各自属性�
 | [滑块](/zh-cn/api/objects/slider/) | `SLIDER` | 可拖动的数值控件。 |
 | [粒子](/zh-cn/api/objects/particle/) | `PARTICLE` | 火花、烟雾、爆炸效果的发射器。 |
 | [序列帧](/zh-cn/api/objects/frame_sequence/) | `FRAME_SEQUENCE` | 逐张图片播放的动画。 |
+| [关键帧](/zh-cn/api/objects/keyframe/) | `KEYFRAME` | 基于时间轴的关键帧动画，随时间改变位置、缩放、旋转和颜色。 |
 | [瓦片地图](/zh-cn/api/objects/tile_map/) | `TILE_MAP` | 用图块拼出的关卡。 |
+| [空节点](/zh-cn/api/objects/node/) | `NODE` | 不可见的容器对象，用于分组、整体变换子对象。 |

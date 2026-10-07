@@ -73,6 +73,11 @@ description: 加载与切换场景，按路径或 uuid 查找对象，在游戏�
 - `name`（`str`）：层级面板中显示的名称。
 - `properties`（`dict`）：初始属性字典，名称与属性检查器、`.scene` 文件一致（`x`、`y`、`width`、`height`、`color`、`text`、`image_path`、`script_path`……）；未填写的按该类型的默认值处理。
 
+### `duplicate_object(obj)`
+在游戏运行时复制一个对象（连同它的全部子对象）并返回副本。副本位于原对象之后、同一个父对象下，属性、子对象、脚本与名称都会保留，只有 uuid 是新的；它的脚本会立即触发 `on_start()`，从下一帧开始更新与绘制。
+
+- `obj`（`object` | `str`）：要复制的对象；不是运行中场景里的对象或场景根对象时返回 `None`。
+
 ## 运行时移除对象
 
 ### `destroy_object(obj)`

@@ -73,6 +73,11 @@ Creates an object in the running scene and returns it; an unknown type or a pare
 - `name` (`str`): the name shown in the Hierarchy panel.
 - `properties` (`dict`): initial values using the same names as the inspector and the `.scene` file (`x`, `y`, `width`, `height`, `color`, `text`, `image_path`, `script_path`, …); everything left out falls back to the default of that type.
 
+### `duplicate_object(obj)`
+Duplicate an object (with its whole subtree) while the game runs and return the copy. The copy sits right after the original under the same parent; properties, children, script and name are kept and only the uuids are fresh. Its scripts' `on_start()` fires right away and it is updated/drawn from the next frame on.
+
+- `obj` (`object` | `str`): the object to duplicate; returns `None` when it is not part of the running scene or is the scene root.
+
 ## Removing objects while the game runs
 
 ### `destroy_object(obj)`

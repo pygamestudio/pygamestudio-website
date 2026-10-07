@@ -6,7 +6,7 @@ description: The runtime API of Pygame Studio — objects, audio, scenes, the ga
 | Page | Contents |
 | --- | --- |
 | [Objects](/api/objects/) | Every scene object type with its own properties, methods and events, plus the API every object shares. |
-| [Audio Player](/api/audio/) | Sound effects, background music, volumes. |
+| [Audio](/api/audio/) | Sound effects, background music, volumes. |
 | [Scene](/api/scene/) | Loading scenes, finding objects by path, name or uuid, creating and removing objects while the game runs, walking the hierarchy. |
 | [Physics](/api/physics/) | Rigid bodies: gravity, body types, mass, friction, forces, velocity, grounded checks, raycasts. |
 | [Global](/api/global/) | The `Game` class with its event hooks, plus `quit()`, `set_fps()`, `get_screen()` and the timing/input helpers. |

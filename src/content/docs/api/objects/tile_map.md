@@ -37,6 +37,51 @@ Layer dictionaries: `{'name', 'visible', 'collision', 'tiles'}`. Type `list`, de
 ### `name`
 Name shown in the Hierarchy panel. Read-only at runtime. Type `str`.
 
+### `physics_angular_damping`
+Angular velocity damping. Type `float`, default `0`.
+
+### `physics_elasticity`
+Bounciness (`0` = fully inelastic, `1` = fully elastic). Type `float`, default `0.2`.
+
+### `physics_enabled`
+Whether the rigid body is simulated. Type `bool`, default `False`.
+
+### `physics_fixed_rotation`
+Keep the rotation fixed (collisions do not spin the object). Type `bool`, default `False`.
+
+### `physics_friction`
+Friction coefficient. Type `float`, default `0.6`.
+
+### `physics_gravity_scale`
+Gravity multiplier (`0` = unaffected by gravity). Type `float`, default `1`.
+
+### `physics_linear_damping`
+Linear velocity damping. Type `float`, default `0`.
+
+### `physics_mass`
+Mass. Type `float`, default `1`.
+
+### `physics_shape_height`, `physics_shape_width`
+Size of the `rect`/`ellipse` body shape (`0` = use the object's own size). Type `float`, default `0`.
+
+### `physics_shape_offset_x`, `physics_shape_offset_y`
+Shift of the body shape away from the object centre. Type `float`, default `0`.
+
+### `physics_shape_points`
+Vertices of a `polygon` body shape. Type `list`, default `[]`.
+
+### `physics_shape_type`
+Body shape: `'rect'`, `'ellipse'` or `'polygon'`. Type `str`, default `'rect'`.
+
+### `physics_type`
+Rigid-body type: `'static'`, `'dynamic'` or `'kinematic'`. Type `str`, default `'dynamic'`.
+
+### `pivot`
+Transform anchor mode, see `set_pivot()`. Type `str`, default `'center'`.
+
+### `pivot_x`, `pivot_y`
+Coordinates of a `'custom'` anchor (in the object's own pixel grid, origin at its top-left). Type `float`, default `0`.
+
 ### `pos`
 `(x, y)`; assigning it updates `x` and `y` too. Type `(int, int)`, default `(20, 20)`.
 
@@ -121,6 +166,9 @@ Fills a whole layer with one tile id.
 ### `get_active_layer_index()`
 The layer the editor paints into.
 
+### `get_active_layer_tiles()`
+Tile ids of every cell on the active layer.
+
 ### `get_angle()`
 Rotation in degrees.
 
@@ -198,6 +246,12 @@ The grid size in tiles as `(columns, rows)`.
 
 ### `get_name()`
 The name of the object.
+
+### `get_pivot()`
+Transform anchor mode (e.g. `'center'`, `'top_left'`, `'custom'`).
+
+### `get_pivot_point()`
+The anchor resolved to content pixels `(x, y)`.
 
 ### `get_pos()`
 Local position `(x, y)`, relative to the parent object.
@@ -398,6 +452,17 @@ Resizes the grid (in tiles); every layer is refitted.
 
 - `columns` (`int`): new number of columns.
 - `rows` (`int`): new number of rows.
+
+### `set_pivot(pivot)`
+Choose the transform anchor.
+
+- `pivot` (`str`): `'center'` (default), `'top_left'`, `'top_center'`, `'top_right'`, `'center_left'`, `'center_right'`, `'bottom_left'`, `'bottom_center'`, `'bottom_right'` or `'custom'`.
+
+### `set_pivot_point(x, y)`
+Rotate/scale around a free point of the object's own pixel grid (also sets `pivot` to `'custom'`).
+
+- `x` (`float`): anchor x in the pixel grid.
+- `y` (`float`): anchor y in the pixel grid.
 
 ### `set_pos(x, y)`
 Sets the local position.

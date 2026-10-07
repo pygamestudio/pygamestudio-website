@@ -31,6 +31,51 @@ description: 由顶点列表构成的自由形状。
 ### `name`
 层级面板中显示的名称。运行时只读。类型 `str`。
 
+### `physics_angular_damping`
+角速度阻尼。类型 `float`，默认 `0`。
+
+### `physics_elasticity`
+弹性系数（`0` 为完全非弹性，`1` 为完全弹性）。类型 `float`，默认 `0.2`。
+
+### `physics_enabled`
+是否启用刚体物理。类型 `bool`，默认 `False`。
+
+### `physics_fixed_rotation`
+是否固定旋转（碰撞也不会让它转动）。类型 `bool`，默认 `False`。
+
+### `physics_friction`
+摩擦系数。类型 `float`，默认 `0.6`。
+
+### `physics_gravity_scale`
+重力缩放（`0` 表示不受重力影响）。类型 `float`，默认 `1`。
+
+### `physics_linear_damping`
+线速度阻尼。类型 `float`，默认 `0`。
+
+### `physics_mass`
+质量。类型 `float`，默认 `1`。
+
+### `physics_shape_height`、`physics_shape_width`
+刚体形状 `rect`、`ellipse` 的尺寸（`0` 表示使用对象自身尺寸）。类型 `float`，默认 `0`。
+
+### `physics_shape_offset_x`、`physics_shape_offset_y`
+刚体形状相对对象中心的偏移。类型 `float`，默认 `0`。
+
+### `physics_shape_points`
+刚体形状 `polygon` 的顶点列表。类型 `list`，默认 `[]`。
+
+### `physics_shape_type`
+刚体形状：`'rect'`、`'ellipse'` 或 `'polygon'`。类型 `str`，默认 `'rect'`。
+
+### `physics_type`
+刚体类型：`'static'`、`'dynamic'` 或 `'kinematic'`。类型 `str`，默认 `'dynamic'`。
+
+### `pivot`
+变换基准点模式，可选值见 `set_pivot()`。类型 `str`，默认 `'center'`。
+
+### `pivot_x`、`pivot_y`
+`'custom'` 基准点的坐标（对象自身的像素网格，原点在对象左上角）。类型 `float`，默认 `0`。
+
 ### `points`
 顶点列表（场景坐标）；顶点 `(0, 0)` 位于画布原点，因此顶点列表描述的是形状的绝对位置。类型 `list`，默认 = 五边形。
 
@@ -139,6 +184,12 @@ description: 由顶点列表构成的自由形状。
 
 ### `get_name()`
 对象名称。
+
+### `get_pivot()`
+变换基准点模式（如 `'center'`、`'top_left'`、`'custom'`）。
+
+### `get_pivot_point()`
+基准点解析到对象内容像素后的坐标 `(x, y)`。
 
 ### `get_points()`
 顶点列表（场景坐标）。
@@ -287,6 +338,17 @@ y 方向缩放系数。
 设置高度。
 
 - `h`（`int`）：新的高度（像素）。
+
+### `set_pivot(pivot)`
+设置变换基准点模式。
+
+- `pivot`（`str`）：`'center'`（默认）、`'top_left'`、`'top_center'`、`'top_right'`、`'center_left'`、`'center_right'`、`'bottom_left'`、`'bottom_center'`、`'bottom_right'` 或 `'custom'`。
+
+### `set_pivot_point(x, y)`
+把基准点设到对象自身像素网格的任意一点（同时把 `pivot` 设为 `'custom'`）。
+
+- `x`（`float`）：基准点 x（对象自身像素网格）。
+- `y`（`float`）：基准点 y。
 
 ### `set_points(points)`
 替换顶点。

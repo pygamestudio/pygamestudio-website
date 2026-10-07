@@ -20,6 +20,7 @@ With nothing selected the Inspector shows no content. Select an object in the [H
 | Row | Meaning |
 | --- | --- |
 | **Visibility** | Shows or hides the object. Hidden objects are not drawn and cannot be clicked. |
+| **Pivot** | the centre of an object's scaling and rotation; it defaults to the **centre**. |
 | **Name** | The name shown in the Hierarchy. |
 | **Pos** | X / Y position, relative to the parent object. |
 | **Size** | Width and height in pixels. |

@@ -8,6 +8,9 @@ description: 在运行时读取工程设置 —— 窗口尺寸、标题、当�
 ### `get_project_config()`
 返回工程的完整设置字典。找不到或无法读取 `project.pygs` 时抛出 `RuntimeError`——只有在文件被手动移动或改写时才会发生。文件位于工程根目录；在[受保护的打包版本](/zh-cn/tutorial/build_game/)中会被加密，读取时自动解密，用法完全一致。
 
+### `get_project_path()`
+当前工程根目录的路径；不在工程中运行时返回 `''`。
+
 ## 设置项
 
 ### `asset`

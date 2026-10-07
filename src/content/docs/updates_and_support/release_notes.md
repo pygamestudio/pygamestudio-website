@@ -1,6 +1,26 @@
 ---
 title: Release Notes
 ---
+## [v1.0.1](https://pypi.org/project/pygamestudio/1.0.1/) - 2026.10.07
+### New Features
+- Add keyframe animation object
+- Add animation editor
+- Add audio clipping function
+- Add transform anchor point, anchor position can be set in the property inspector
+- Add empty node object
+
+### Optimizations
+- Optimize loading speed and runtime performance for web packaging
+- Optimize image editor with pixel drawing capability
+- Optimize AI assistant, support saving session history locally
+- Optimize child object display in scene editor: child objects moved outside parent can be rendered normally
+
+### Bug Fixes
+- Fix abnormal window stretching issue
+- Fix MCP cannot save scene when no scene file exists
+
+<br>
+
 ## [v1.0.0](https://pypi.org/project/pygamestudio/1.0.0/) - 2026.09.27
 ### New Features
 1. The editor default language automatically follows the system language.
