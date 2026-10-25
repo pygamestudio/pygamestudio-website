@@ -10,7 +10,7 @@ Objects are all created in the **Hierarchy** panel in the upper-left corner of t
 
 ![Add Menu](/images/doc/create_an_object_add_menu.png)
 
-The new object is inserted below the selected object, becomes selected automatically, appears in the scene at its default position (20, 20), and its properties show up in the Inspector on the right at the same time.
+The new object is inserted below the selected object, becomes selected automatically, appears in the scene at its default position (0, 0), and its properties show up in the Inspector on the right at the same time.
 
 ![New Object](/images/doc/create_an_object_added.png)
 

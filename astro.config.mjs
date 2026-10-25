@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkCjkEmphasis from './src/plugins/remark-cjk-emphasis.mjs';
+import remarkVersionedImages from './src/plugins/remark-versioned-images.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,12 +10,19 @@ export default defineConfig({
 	markdown: {
 		// `**粗体**` glued to Chinese characters does not parse as emphasis by
 		// default; the plugin turns those leftovers into real bold text.
-		remarkPlugins: [remarkCjkEmphasis],
+		// Archived docs read the pictures of their own release
+		// (`/images/v1.0.0/doc/...`), the current docs keep the shared ones.
+		remarkPlugins: [remarkCjkEmphasis, remarkVersionedImages],
 	},
 	integrations: [
 		starlight({
 			title: 'Pygame Studio',
 			favicon: 'favicon.ico',
+			// The API reference lists every property, method and event as an h4
+			// under its `##` section, so the right-hand "On this page" column has
+			// to reach that deep — it is the fastest way to jump to one member.
+			// No other page uses h4, so nothing else grows.
+			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 },
 			customCss: ['./src/styles/custom.css'],
 			head: [
 				{
@@ -81,6 +89,9 @@ export default defineConfig({
 				ThemeSelect: './src/components/ThemeSelect.astro',
 				// Sidebar links follow the version the reader is browsing.
 				Sidebar: './src/components/Sidebar.astro',
+				// Previous/next links follow the version too (they used to be empty
+				// on archived pages).
+				Pagination: './src/components/Pagination.astro',
 				// "Old docs" notice above the page title of archived versions.
 				PageTitle: './src/components/PageTitle.astro',
 			},
@@ -131,6 +142,17 @@ export default defineConfig({
 						{ slug: 'editor_introduction/inspector' },	
 						{ slug: 'editor_introduction/ai_agent' },
 						{ slug: 'editor_introduction/build_window' },
+					],
+				},
+				{
+					label: 'Platforms',
+					translations: {
+						'zh-CN': '发布平台',
+					},
+					collapsed: true,
+					items: [
+						{ slug: 'platform/bilibili_toy' },
+						{ slug: 'platform/taptap_pc' },
 					],
 				},
 				// {
@@ -249,6 +271,26 @@ export default defineConfig({
 						{ slug: 'api/physics' },
 						{ slug: 'api/window' },
 						{ slug: 'api/config' },
+						{
+							label: 'Platform SDK',
+							translations: { 'zh-CN': '平台 SDK' },
+							collapsed: true,
+							items: [
+								{
+									slug: 'api/sdk',
+									label: 'Overview',
+									translations: { 'zh-CN': '总览' },
+								},
+								{
+									slug: 'api/sdk/taptap_pc',
+									label: 'TapTap PC',
+								},
+								{
+									slug: 'api/sdk/bilibili_toy',
+									label: 'bilibili Toy',
+								},
+							],
+						},
 						{ slug: 'api/events' },
 					],
 				},

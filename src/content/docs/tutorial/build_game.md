@@ -17,6 +17,7 @@ When the game is finished, the **Project → Build** menu packs the whole projec
 | **Build** | Starts the build; while it runs the button text turns into **Stop**. |
 | **Run Game** | Available after a successful build: starts the built executable as a separate process, so you can try it right away. |
 | **Open Output Dir** | Opens the output folder in the file manager. |
+| **Platform** | SDK from the platform will be added during building. |
 
 These settings are saved in the project and filled in again automatically the next time the Build window is opened. Every build clears the cache and temporary files left behind by the previous build first — no manual cleanup needed.
 
@@ -41,8 +42,10 @@ The **Web App** build packs the project into a tiny folder (`index.html` + `game
 | **Output Dir** | Defaults to the project folder; the result is written to its `build/Web/` subfolder. |
 | **Build** | Starts the build; while it runs the button text turns into **Stop**. |
 | **Run in Browser** | Starts a local server for the output folder and opens the browser automatically. |
+| **Open Output Dir** | Opens the output folder in the file manager. |
+| **Platform** | SDK from the platform will be added during building. |
 
-Upload `index.html` and `game.zip` to any static host (GitHub Pages, Netlify, an ordinary web server) to publish the game. Every control and the loading flow are described on the [Build Window](/editor_introduction/build_window/) page.
+Upload built contents to any static host (GitHub Pages, Netlify, an ordinary web server) to publish the game. Every control and the loading flow are described on the [Build Window](/editor_introduction/build_window/) page.
 
 ## When a build fails
 

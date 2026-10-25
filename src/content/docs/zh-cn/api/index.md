@@ -1,6 +1,6 @@
 ---
 title: API 参考
-description: Pygame Studio 的运行时 API —— 对象、音频、场景、游戏主循环、窗口、项目配置与事件。
+description: Pygame Studio 的运行时 API —— 对象、音频、场景、游戏主循环、窗口、项目配置、平台 SDK 与事件。
 ---
 
 | 页面 | 内容 |
@@ -12,4 +12,6 @@ description: Pygame Studio 的运行时 API —— 对象、音频、场景、�
 | [全局](/zh-cn/api/global/) | `Game` 类及其全部事件回调，以及 `quit()`、`set_fps()`、`get_screen()` 和时间、输入查询函数。 |
 | [窗口](/zh-cn/api/window/) | 标题、图标、尺寸、位置、全屏、缩放与鼠标光标。 |
 | [项目配置](/zh-cn/api/config/) | 读取 `project.pygs` 中的项目设置。 |
+| [平台 SDK](/zh-cn/api/sdk/) | TapTap PC 与 bilibili Toy 的 SDK：登录、成就、云存档、排行榜、分享。 |
 | [事件与按键](/zh-cn/api/events/) | 键盘常量（`studio.K_SPACE` 等）、修饰键与鼠标按键。 |
+

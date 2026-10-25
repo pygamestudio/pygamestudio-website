@@ -28,6 +28,7 @@ A tab bar sits at the top of the window; each tab is one build target:
 | **Build** | Starts the build; while it runs the button text turns into **Stop**. |
 | **Run Game** | Available after a successful build: starts the built executable as a separate process, so you can try it right away. |
 | **Open Output Dir** | Opens the output folder in the file manager. |
+| **Platform** | SDK from the platform will be added during building. |
 
 These settings are saved in the project and filled in again automatically the next time the Build window is opened. Every build clears the cache and temporary files left behind by the previous build first — no manual cleanup needed.
 
@@ -52,17 +53,20 @@ The **Web App** build packs the project into a tiny folder (`index.html` + `game
 | **Output Dir** | Defaults to the project folder; the result is written to its `build/Web/` subfolder. |
 | **Build** | Starts the build; while it runs the button text turns into **Stop**. |
 | **Run in Browser** | Starts a local server for the output folder and opens the browser automatically. |
+| **Scan to Play** | After build, hover over this button to show a QR code. Scan it to try the game on your phone. |
+| **Platform** | SDK from the platform will be added during building. |
 
 **Run in Browser** is the quickest way to try a build: the button becomes available once a build has succeeded, starts a small local web server and opens the game page in your default browser.
 
 ```text
 <Output Dir>/build/Web/
+├─ pyodide/        Folder for game runtime dependencies
 ├─ index.html      the page (opens the game, shows loading state and errors)
 ├─ game.zip        the protected project + a patched copy of the engine
 ├─ favicon.ico     the browser tab icon
 ```
 
-Upload `index.html` and `game.zip` to any static host (GitHub Pages, Netlify, an ordinary web server) to publish the game. Or run it with:
+Upload built contents to any static host (GitHub Pages, Netlify, an ordinary web server) to publish the game. Or run it with:
 
 ```bash
 python -m http.server 8000 --directory "<Output Dir>/build/Web"
@@ -74,16 +78,12 @@ Then open `http://localhost:8000/` in the browser.
 Double-clicking `index.html` does not work — the browser refuses to read the `game.zip` file directly.
 :::
 
-:::tip
-The Pyodide URL used for the build is fixed in the code: `DEFAULT_PYODIDE_URL` in `gui/build/web.py` (currently `https://cdn.jsdelivr.net/pyodide/v314.0.7/full/`). Point it at your own copy to run without any CDN.
-:::
-
 ## Build protection and encryption
 
-Before a build, a copy of the project is made; the original project folder is never touched and everything happens in the copy. In the copy all comments and docstrings are removed; if `pyobfus` is installed the code is also lightly obfuscated; then the project's resources (images, audio, fonts, scene files) are encrypted. `project.pygs` and `main.py` stay in plain text.
+Before a build, a copy of the project is made; the original project folder is never touched and everything happens in the copy. In the copy all comments and docstrings are removed; then the project's resources (images, audio, fonts, scene files) are encrypted. `project.pygs` and `main.py` stay in plain text.
 
 :::note
-The editor is open source, so its encryption and obfuscation mechanisms are public — the protection only deters casual copying, nothing more.
+The editor is open source, so its encryption and obfuscation algorithm are public — the protection only deters casual copying, nothing more.
 :::
 
 ## When a build fails

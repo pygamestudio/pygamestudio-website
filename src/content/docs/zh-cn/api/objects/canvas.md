@@ -5,339 +5,375 @@ description: 场景的根对象 —— 游戏画面的背景色与尺寸。
 
 类型标识：`CANVAS`
 
+**使用方式：** 在对象自己的脚本里，`self.obj` 就是这个对象本身，属性和方法都通过它读写和调用。脚本里以 `on_…` 开头的函数可以重写，用来实现自定义逻辑。
+
+```python
+class ObjectScript:
+    def __init__(self, obj):
+        self.obj = obj
+
+    def on_start(self):
+        self.obj.set_color((24, 24, 32, 255))
+        self.obj.set_scale(0.9, 0.9)
+```
+
 ## 属性
 
-### `angle`
+#### `angle`
 旋转角度（度），顺时针为正。类型 `float`，默认 `0`。
 
-### `color`
+#### `color`
 场景背景色。类型 `(r, g, b, a)`，默认 `(0, 0, 0, 255)`。
 
-### `name`
+#### `name`
 层级面板中显示的名称。运行时只读。类型 `str`。
 
-### `physics_angular_damping`
+#### `physics_angular_damping`
 角速度阻尼。类型 `float`，默认 `0`。
 
-### `physics_elasticity`
+#### `physics_elasticity`
 弹性系数（`0` 为完全非弹性，`1` 为完全弹性）。类型 `float`，默认 `0.2`。
 
-### `physics_enabled`
+#### `physics_enabled`
 是否启用刚体物理。类型 `bool`，默认 `False`。
 
-### `physics_fixed_rotation`
+#### `physics_fixed_rotation`
 是否固定旋转（碰撞也不会让它转动）。类型 `bool`，默认 `False`。
 
-### `physics_friction`
+#### `physics_friction`
 摩擦系数。类型 `float`，默认 `0.6`。
 
-### `physics_gravity_scale`
+#### `physics_gravity_scale`
 重力缩放（`0` 表示不受重力影响）。类型 `float`，默认 `1`。
 
-### `physics_linear_damping`
+#### `physics_linear_damping`
 线速度阻尼。类型 `float`，默认 `0`。
 
-### `physics_mass`
+#### `physics_mass`
 质量。类型 `float`，默认 `1`。
 
-### `physics_shape_height`、`physics_shape_width`
+#### `physics_shape_height`、`physics_shape_width`
 刚体形状 `rect`、`ellipse` 的尺寸（`0` 表示使用对象自身尺寸）。类型 `float`，默认 `0`。
 
-### `physics_shape_offset_x`、`physics_shape_offset_y`
+#### `physics_shape_offset_x`、`physics_shape_offset_y`
 刚体形状相对对象中心的偏移。类型 `float`，默认 `0`。
 
-### `physics_shape_points`
+#### `physics_shape_points`
 刚体形状 `polygon` 的顶点列表。类型 `list`，默认 `[]`。
 
-### `physics_shape_type`
+#### `physics_shape_type`
 刚体形状：`'rect'`、`'ellipse'` 或 `'polygon'`。类型 `str`，默认 `'rect'`。
 
-### `physics_type`
+#### `physics_type`
 刚体类型：`'static'`、`'dynamic'` 或 `'kinematic'`。类型 `str`，默认 `'dynamic'`。
 
-### `pivot`
+#### `pivot`
 变换基准点模式，可选值见 `set_pivot()`。类型 `str`，默认 `'center'`。
 
-### `pivot_x`、`pivot_y`
+#### `pivot_x`、`pivot_y`
 `'custom'` 基准点的坐标（对象自身的像素网格，原点在对象左上角）。类型 `float`，默认 `0`。
 
-### `pos`
+#### `pos`
 即 `(x, y)`，赋值时会同步更新 `x` 和 `y`。类型 `(int, int)`，默认 `(20, 20)`。
 
-### `scale`
+#### `scale`
 即 `(scale_x, scale_y)`。类型 `(float, float)`，默认 `(1, 1)`。
 
-### `scale_x`、`scale_y`
+#### `scale_x`、`scale_y`
 缩放系数（`1` 为原始大小）。类型 `float`，默认 `1`。
 
-### `script_path`
+#### `script_path`
 已挂载脚本的路径（相对于工程目录）。类型 `str`，默认 `''`。
 
-### `size`
+#### `size`
 即 `(width, height)`。类型 `(int, int)`。
 
-### `type`
+#### `type`
 类型标识；画布为 `CANVAS`。运行时只读。类型 `str`。
 
-### `uuid`
+#### `uuid`
 唯一标识，供 `get_object_by_uuid()` 使用。运行时只读。类型 `str`。
 
-### `visible`
+#### `visible`
 隐藏的对象不会绘制，也无法被点击。类型 `bool`，默认 `True`。
 
-### `width`、`height`
+#### `width`、`height`
 画布尺寸（像素）；编辑器会让它与项目中的窗口尺寸保持一致。类型 `int`，默认为窗口尺寸。
 
-### `x`、`y`
+#### `x`、`y`
 相对于父对象的位置（画布本身位于 `0, 0`）。类型 `int`，默认 `20`。
 
 ## 方法
 
-### `distance_to(x, y)`
+#### `distance_to(x, y)`
 对象中心到某个点的距离。
 
 - `x`（`int`）：点的 x（场景坐标）。
 - `y`（`int`）：点的 y（场景坐标）。
 
-### `distance_to_object(other)`
+#### `distance_to_object(other)`
 两个对象中心之间的距离。
 
 - `other`（`object`）：另一个对象。
 
-### `get_angle()`
+#### `get_angle()`
 旋转角度（度）。
 
-### `get_center()`
+#### `get_center()`
 对象中心（场景坐标）。
 
-### `get_color()`
+#### `get_color()`
 填充、文字或着色颜色 `(r, g, b, a)`。
 
-### `get_direction_to(x, y)`
+#### `get_direction_to(x, y)`
 从对象指向某点的单位向量 `(dx, dy)`。
 
 - `x`（`int`）：点的 x（场景坐标）。
 - `y`（`int`）：点的 y（场景坐标）。
 
-### `get_height()`
+#### `get_height()`
 高度（像素）。
 
-### `get_name()`
+#### `get_name()`
 对象名称。
 
-### `get_pivot()`
+#### `get_pivot()`
 变换基准点模式（如 `'center'`、`'top_left'`、`'custom'`）。
 
-### `get_pivot_point()`
+#### `get_pivot_point()`
 基准点解析到对象内容像素后的坐标 `(x, y)`。
 
-### `get_pos()`
+#### `get_pos()`
 相对父对象的本地坐标 `(x, y)`。
 
-### `get_rect()`
+#### `get_rect()`
 对象的本地 `pygame.Rect`。
 
-### `get_scale()`
+#### `get_scale()`
 缩放系数 `(scale_x, scale_y)`。
 
-### `get_scale_x()`
+#### `get_scale_x()`
 x 方向缩放系数。
 
-### `get_scale_y()`
+#### `get_scale_y()`
 y 方向缩放系数。
 
-### `get_size()`
+#### `get_size()`
 尺寸 `(宽, 高)`（像素）。
 
-### `get_type()`
+#### `get_type()`
 对象类型标识。
 
-### `get_uuid()`
+#### `get_uuid()`
 对象 uuid。
 
-### `get_visible_state()`
+#### `get_visible_state()`
 读取 `visible` 状态。
 
-### `get_width()`
+#### `get_width()`
 宽度（像素）。
 
-### `get_world_pos()`
+#### `get_world_pos()`
 叠加父对象偏移后的场景坐标。
 
-### `get_world_rect()`
+#### `get_world_rect()`
 场景坐标下的 `pygame.Rect`。
 
-### `get_x()`
+#### `get_x()`
 本地坐标的 x 分量。
 
-### `get_y()`
+#### `get_y()`
 本地坐标的 y 分量。
 
-### `hide()`
+#### `hide()`
 隐藏对象，等同于设置 `obj.visible = False`。
 
-### `is_hidden()`
+#### `is_hidden()`
 对象是否被隐藏。
 
-### `is_point_inside(x, y)`
+#### `is_point_inside(x, y)`
 轻量检测：点落在对象的外接矩形内即为 `True`。
 
 - `x`（`int`）：点的 x（场景坐标）。
 - `y`（`int`）：点的 y（场景坐标）。
 
-### `is_pressed(x, y)`
+#### `is_pressed(x, y)`
 逐像素检测：只有落在非透明像素上才是 `True`。适合处理点击，不适合每帧调用。
 
 - `x`（`int`）：点的 x（场景坐标）。
 - `y`（`int`）：点的 y（场景坐标）。
 
-### `is_shown()`
+#### `is_shown()`
 同 `is_visible()`。
 
-### `is_visible()`
+#### `is_visible()`
 对象是否可见。
 
-### `move(dx, dy)`
+#### `move(dx, dy)`
 在当前位置上移动 `(dx, dy)` 像素；在画布上移动即移动整个场景。
 
 - `dx`（`int`）：水平位移。
 - `dy`（`int`）：垂直位移。
 
-### `set_angle(degrees)`
+#### `set_angle(degrees)`
 设置旋转角度。
 
 - `degrees`（`float`）：角度（度），顺时针为正。
 
-### `set_center(x, y)`
+#### `set_center(x, y)`
 设置对象中心（场景坐标）。
 
 - `x`（`int`）：新的中心 x。
 - `y`（`int`）：新的中心 y。
 
-### `set_color(color)`
+#### `set_color(color)`
 设置颜色。
 
 - `color`（`(r, g, b, a)`）：新的颜色元组。
 
-### `set_height(h)`
+#### `set_height(h)`
 设置高度。
 
 - `h`（`int`）：新的高度（像素）。
 
-### `set_pivot(pivot)`
+#### `set_pivot(pivot)`
 设置变换基准点模式。
 
 - `pivot`（`str`）：`'center'`（默认）、`'top_left'`、`'top_center'`、`'top_right'`、`'center_left'`、`'center_right'`、`'bottom_left'`、`'bottom_center'`、`'bottom_right'` 或 `'custom'`。
 
-### `set_pivot_point(x, y)`
+#### `set_pivot_point(x, y)`
 把基准点设到对象自身像素网格的任意一点（同时把 `pivot` 设为 `'custom'`）。
 
 - `x`（`float`）：基准点 x（对象自身像素网格）。
 - `y`（`float`）：基准点 y。
 
-### `set_pos(x, y)`
+#### `set_pos(x, y)`
 设置相对父对象的本地坐标。
 
 - `x`（`int`）：新的 x，相对父对象（像素）。
 - `y`（`int`）：新的 y，相对父对象（像素）。
 
-### `set_scale(sx, sy)`
+#### `set_scale(sx, sy)`
 设置两个缩放系数。
 
 - `sx`（`float`）：x 方向缩放系数。
 - `sy`（`float`）：y 方向缩放系数。
 
-### `set_scale_x(sx)`
+#### `set_scale_x(sx)`
 设置 x 方向缩放系数。
 
 - `sx`（`float`）：x 方向缩放系数。
 
-### `set_scale_y(sy)`
+#### `set_scale_y(sy)`
 设置 y 方向缩放系数。
 
 - `sy`（`float`）：y 方向缩放系数。
 
-### `set_size(width, height)`
+#### `set_size(width, height)`
 设置尺寸（像素）。
 
 - `width`（`int`）：新的宽度。
 - `height`（`int`）：新的高度。
 
-### `set_visible_state(visible)`
+#### `set_visible_state(visible)`
 设置 `visible` 状态。
 
 - `visible`（`bool`）：`True` 显示对象，`False` 隐藏对象。
 
-### `set_width(w)`
+#### `set_width(w)`
 设置宽度。
 
 - `w`（`int`）：新的宽度（像素）。
 
-### `set_world_pos(x, y)`
+#### `set_world_pos(x, y)`
 设置场景坐标（已叠加父对象偏移）。
 
 - `x`（`int`）：新的 x（场景坐标）。
 - `y`（`int`）：新的 y（场景坐标）。
 
-### `set_x(x)`
+#### `set_x(x)`
 设置本地坐标的 x 分量。
 
 - `x`（`int`）：新的 x，相对父对象。
 
-### `set_y(y)`
+#### `set_y(y)`
 设置本地坐标的 y 分量。
 
 - `y`（`int`）：新的 y，相对父对象。
 
-### `show()`
+#### `show()`
 显示对象，等同于设置 `obj.visible = True`。
 
 ## 事件
 
-### `on_clicked()`
+#### `on_clicked()`
 在该对象上完成一次按下并释放。
 
-### `on_destroy()`
+#### `on_destroy()`
 场景被替换或游戏退出时执行。
 
-### `on_double_clicked()`
+#### `on_double_clicked()`
 双击该对象。
 
-### `on_drag(pos)`
+#### `on_drag(pos)`
 拖动过程中鼠标移动。
 
 - `pos`（`(int, int)`）：指针位置（场景坐标）。
 
-### `on_drag_end()`
+#### `on_drag_end()`
 拖动结束。
 
-### `on_drag_start()`
+#### `on_drag_start()`
 在对象上开始拖动。
 
-### `on_mouse_enter()`
+#### `on_mouse_enter()`
 鼠标移入对象。
 
-### `on_mouse_leave()`
+#### `on_mouse_leave()`
 鼠标移出对象。
 
-### `on_pressed()`
+#### `on_pressed()`
 在该对象上按下鼠标左键。
 
-### `on_released()`
+#### `on_released()`
 在该对象上按下的按键被释放。
 
-### `on_right_clicked()`
+#### `on_right_clicked()`
 右键点击该对象。
 
-### `on_start()`
+#### `on_start()`
 场景加载完成后执行一次。
 
-### `on_update(dt)`
+#### `on_tap(finger_id, pos)`
+在对象上按下并抬起的短触，相当于触摸版的 `on_clicked()`。
+
+- `finger_id`（`int`）：第几根手指，多个手指可以同时操作。
+- `pos`（`(int, int)`）：场景坐标下的触摸位置。
+
+#### `on_touch_down(finger_id, pos)`
+手指按在对象上。对象（或其脚本）实现了任意触摸钩子后，这根手指的整个手势就归它所有：平台由该手指派生的鼠标事件不会再触发一次点击、拖拽钩子。
+
+- `finger_id`（`int`）：第几根手指。
+- `pos`（`(int, int)`）：场景坐标下的触摸位置。
+
+#### `on_touch_move(finger_id, pos)`
+在对象上按下的手指移动。手势归属于按下的那个对象，手指移出对象后仍会继续上报。
+
+- `finger_id`（`int`）：第几根手指。
+- `pos`（`(int, int)`）：场景坐标下的触摸位置。
+
+#### `on_touch_up(finger_id, pos)`
+在对象上按下的手指抬起。
+
+- `finger_id`（`int`）：第几根手指。
+- `pos`（`(int, int)`）：场景坐标下的触摸位置。
+
+#### `on_update(dt)`
 每帧执行。
 
 - `dt`（`float`）：距上一帧的秒数。
 
-### `on_visible_changed(visible)`
+#### `on_visible_changed(visible)`
 对象被显示或隐藏时。
 
 - `visible`（`bool`）：显示为 `True`，隐藏为 `False`。

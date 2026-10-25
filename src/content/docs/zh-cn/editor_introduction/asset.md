@@ -38,7 +38,7 @@ MyGame/
 | `.py` 脚本 | [代码编辑器](/zh-cn/editor_introduction/code_editor/) |
 | `.scene` | 在[场景编辑器](/zh-cn/editor_introduction/scene/)中加载该场景 |
 | 图片 | 内置[图片编辑器](/zh-cn/editor_introduction/image_editor/) |
-| 音频 | [音频播放器](/zh-cn/editor_introduction/audio_player/) |
+| 音频 | [音频播放器](/zh-cn/editor_introduction/audio_editor/) |
 | 其它文本文件（`.json`、`.txt`、`.md` 等） | [代码编辑器](/zh-cn/editor_introduction/code_editor/) |
 | 其它类型 | 系统默认程序 |
 

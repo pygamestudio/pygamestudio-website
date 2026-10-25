@@ -2,7 +2,7 @@
 title: Audio Editor
 ---
 
-The **Audio Player** lets you listen to the project's audio right inside the editor. Double-click an audio file in the [Asset](/editor_introduction/asset/) panel and it opens at the bottom of the window.
+The **Audio Editor** lets you listen to the project's audio right inside the editor. Double-click an audio file in the [Asset](/editor_introduction/asset/) panel and it opens at the bottom of the window.
 
 ![Audio Player](/images/doc/audio_editor_window.png)
 

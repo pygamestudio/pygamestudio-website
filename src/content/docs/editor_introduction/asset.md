@@ -38,7 +38,7 @@ MyGame/
 | `.py` script | the [Code Editor](/editor_introduction/code_editor/) |
 | `.scene` | loads the scene into the [Scene](/editor_introduction/scene/) panel |
 | image | the built-in [Image Editor](/editor_introduction/image_editor/) |
-| audio | the [Audio Player](/editor_introduction/audio_player/) |
+| audio | the [Audio Player](/editor_introduction/audio_editor/) |
 | other text files (`.json`, `.txt`, `.md`, …) | the [Code Editor](/editor_introduction/code_editor/) |
 | anything else | the application your system uses for that file type |
 

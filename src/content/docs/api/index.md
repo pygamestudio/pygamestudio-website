@@ -1,6 +1,6 @@
 ---
 title: API Reference
-description: The runtime API of Pygame Studio — objects, audio, scenes, the game loop, the window, project config and events.
+description: The runtime API of Pygame Studio — objects, audio, scenes, the game loop, the window, project config, platform SDKs and events.
 ---
 
 | Page | Contents |
@@ -12,4 +12,6 @@ description: The runtime API of Pygame Studio — objects, audio, scenes, the ga
 | [Global](/api/global/) | The `Game` class with its event hooks, plus `quit()`, `set_fps()`, `get_screen()` and the timing/input helpers. |
 | [Window](/api/window/) | Title, icon, size, position, fullscreen, resizing, mouse cursor. |
 | [Project Config](/api/config/) | Reading the project settings from `project.pygs`. |
+| [Platform SDK](/api/sdk/) | The TapTap PC and bilibili Toy SDKs: login, achievements, cloud saves, leaderboards, sharing. |
 | [Events & Keys](/api/events/) | Keyboard constants (`studio.K_SPACE`, …), key modifiers and mouse buttons. |
+

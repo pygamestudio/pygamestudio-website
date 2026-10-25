@@ -28,9 +28,9 @@ pip install pygamestudio
 | PySide6 | >=6.10.0 | 
 | platformdirs | >=3.5.1 | 
 | numpy | >=1.26.0 | 
+| soundfile | >=0.13.1 |
 | pyinstaller | >=6.18.0 | 
 | pymunk | >=7.0 | 
-| pyobfus | >=0.5 | 
 
 ## 验证安装是否成功
 安装完成后，在终端输入以下命令：

@@ -28,9 +28,9 @@ This command will automatically download and install the latest stable version o
 | PySide6 | >=6.10.0 | 
 | platformdirs | >=3.5.1 | 
 | numpy | >=1.26.0 | 
+| soundfile | >=0.13.1 |
 | pyinstaller | >=6.18.0 |
 | pymunk | >=7.0 | 
-| pyobfus | >=0.5 | 
 
 ## Verify the Installation
 After installation, run the following command in your terminal:

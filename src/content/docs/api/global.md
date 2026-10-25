@@ -3,27 +3,43 @@ title: Global
 description: The Game class with its main loop and every on_* event hook, plus the global helpers quit(), set_fps(), get_screen() and friends.
 ---
 
-This page provides a list of the interface details in the game entry point `main.py`.
+**How it is used:** Functions are called as `studio.…`, from `main.py` or from an object script. The `on_…` methods can be overridden to implement your own logic, but only on the `Game` class in `main.py`.
+
+```python
+import pygamestudio as studio
+
+class Game(studio.Game):
+    def on_start(self):
+        studio.set_fps(60)
+        studio.show_debug_info()
+
+    def on_key_down(self, key, mod, unicode, scancode, window=None):
+        if key == studio.K_ESCAPE:
+            studio.quit()
+
+if __name__ == '__main__':
+    Game().run()
+```
 
 ## The `Game` class
 
-### `on_quit()`
+#### `on_quit()`
 Called once after the loop ends, just before pygame shuts down.
 
-### `on_start()`
+#### `on_start()`
 Called once, before the loop starts.
 
-### `on_update(dt)`
+#### `on_update(dt)`
 Called every frame.
 
 - `dt` (`float`): seconds since the last frame.
 
-### `run()`
+#### `run()`
 Starts the game: initialises pygame, resolves the project folder, calls `on_start()` and then loops until the window is closed.
 
 ## Keyboard hooks
 
-### `on_key_down(key, mod, unicode, scancode, window)`
+#### `on_key_down(key, mod, unicode, scancode, window)`
 Fired when a key is pressed.
 
 - `key` (`int`): one of the `studio.K_*` constants.
@@ -32,7 +48,7 @@ Fired when a key is pressed.
 - `scancode` (`int`): the physical key.
 - `window` (`pygame.Window` | `None`): the window of the event, `None` when there is none.
 
-### `on_key_up(key, mod, unicode, scancode, window)`
+#### `on_key_up(key, mod, unicode, scancode, window)`
 Fired when a key is released.
 
 - `key` (`int`): one of the `studio.K_*` constants.
@@ -43,7 +59,7 @@ Fired when a key is released.
 
 ## Mouse hooks
 
-### `on_mouse_button_down(pos, btn, touch, clicks, window)`
+#### `on_mouse_button_down(pos, btn, touch, clicks, window)`
 Fired when a mouse button goes down.
 
 - `pos` (`(int, int)`): pointer position in window coordinates.
@@ -52,7 +68,7 @@ Fired when a mouse button goes down.
 - `clicks` (`int`): counts a double click.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_mouse_button_up(pos, btn, touch, clicks, window)`
+#### `on_mouse_button_up(pos, btn, touch, clicks, window)`
 Fired when a mouse button is released.
 
 - `pos` (`(int, int)`): pointer position in window coordinates.
@@ -61,7 +77,7 @@ Fired when a mouse button is released.
 - `clicks` (`int`): counts a double click.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_mouse_motion(pos, rel, buttons, touch, window)`
+#### `on_mouse_motion(pos, rel, buttons, touch, window)`
 Fired when the pointer moves.
 
 - `pos` (`(int, int)`): pointer position in window coordinates.
@@ -70,7 +86,7 @@ Fired when the pointer moves.
 - `touch` (`int`): `0` for a mouse.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_mouse_wheel(flipped, x, y, touch, precise_x, precise_y, window)`
+#### `on_mouse_wheel(flipped, x, y, touch, precise_x, precise_y, window)`
 Fired when the wheel is turned.
 
 - `flipped` (`bool`): whether the scroll direction is flipped.
@@ -83,58 +99,58 @@ Fired when the wheel is turned.
 
 ## Joystick and controller hooks
 
-### `on_controller_added(device_index)`
+#### `on_controller_added(device_index)`
 A game controller (Game Controller API) was plugged in.
 
 - `device_index` (`int`): index of the device.
 
-### `on_controller_remapped(instance_id)`
+#### `on_controller_remapped(instance_id)`
 A game controller's button mapping changed.
 
 - `instance_id` (`int`): index of the device instance.
 
-### `on_controller_removed(instance_id)`
+#### `on_controller_removed(instance_id)`
 A game controller was removed.
 
 - `instance_id` (`int`): index of the device instance.
 
-### `on_joy_axis_motion(instance_id, axis, value)`
+#### `on_joy_axis_motion(instance_id, axis, value)`
 An analogue stick/trigger moved.
 
 - `instance_id` (`int`): index of the device instance.
 - `axis` (`int`): index of the axis.
 - `value` (`float`): position of the axis, `-1.0`-`1.0`.
 
-### `on_joy_ball_motion(instance_id, ball, rel)`
+#### `on_joy_ball_motion(instance_id, ball, rel)`
 A trackball moved.
 
 - `instance_id` (`int`): index of the device instance.
 - `ball` (`int`): index of the trackball.
 - `rel` (`(int, int)`): relative movement.
 
-### `on_joy_button_down(instance_id, button)`
+#### `on_joy_button_down(instance_id, button)`
 A joystick button was pressed.
 
 - `instance_id` (`int`): index of the device instance.
 - `button` (`int`): index of the button.
 
-### `on_joy_button_up(instance_id, button)`
+#### `on_joy_button_up(instance_id, button)`
 A joystick button was released.
 
 - `instance_id` (`int`): index of the device instance.
 - `button` (`int`): index of the button.
 
-### `on_joy_device_added(device_index)`
+#### `on_joy_device_added(device_index)`
 A joystick was plugged in.
 
 - `device_index` (`int`): index of the device.
 
-### `on_joy_device_removed(instance_id)`
+#### `on_joy_device_removed(instance_id)`
 A joystick was unplugged.
 
 - `instance_id` (`int`): index of the device instance.
 
-### `on_joy_hat_motion(instance_id, hat, value)`
+#### `on_joy_hat_motion(instance_id, hat, value)`
 A d-pad changed.
 
 - `instance_id` (`int`): index of the device instance.
@@ -143,96 +159,96 @@ A d-pad changed.
 
 ## Window hooks
 
-### `on_window_close()`
+#### `on_window_close()`
 The window received a close request.
 
-### `on_window_display_changed(display_index)`
+#### `on_window_display_changed(display_index)`
 The window moved to another display.
 
 - `display_index` (`int`): index of the new display.
 
-### `on_window_enter()`
+#### `on_window_enter()`
 The pointer entered the window.
 
-### `on_window_exposed()`
+#### `on_window_exposed()`
 The window needs to be redrawn.
 
-### `on_window_focus_gained()`
+#### `on_window_focus_gained()`
 The window gained the input focus.
 
-### `on_window_focus_lost()`
+#### `on_window_focus_lost()`
 The window lost the input focus.
 
-### `on_window_hidden()`
+#### `on_window_hidden()`
 The window was hidden.
 
-### `on_window_hit_test()`
+#### `on_window_hit_test()`
 A hit-test request for the window (click-through).
 
-### `on_window_icc_changed()`
+#### `on_window_icc_changed()`
 The window's ICC colour profile changed.
 
-### `on_window_leave()`
+#### `on_window_leave()`
 The pointer left the window.
 
-### `on_window_maximized()`
+#### `on_window_maximized()`
 The window was maximised.
 
-### `on_window_minimized()`
+#### `on_window_minimized()`
 The window was minimised.
 
-### `on_window_moved(x, y)`
+#### `on_window_moved(x, y)`
 The window moved.
 
 - `x` (`int`): new x position.
 - `y` (`int`): new y position.
 
-### `on_window_resized(x, y)`
+#### `on_window_resized(x, y)`
 A window resize finished.
 
 - `x` (`int`): new width.
 - `y` (`int`): new height.
 
-### `on_window_restored()`
+#### `on_window_restored()`
 The window was restored from being minimised or maximised.
 
-### `on_window_shown()`
+#### `on_window_shown()`
 The window was shown.
 
-### `on_window_size_changed(x, y)`
+#### `on_window_size_changed(x, y)`
 The window size changed.
 
 - `x` (`int`): new width.
 - `y` (`int`): new height.
 
-### `on_window_take_focus()`
+#### `on_window_take_focus()`
 The window was asked to take the focus.
 
 ## Text, drops and touch hooks
 
-### `on_drop_begin(window)`
+#### `on_drop_begin(window)`
 A file drag from the operating system enters the window.
 
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_drop_complete(window)`
+#### `on_drop_complete(window)`
 The file drag leaves the window.
 
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_drop_file(file_path, window)`
+#### `on_drop_file(file_path, window)`
 A file was dropped onto the window.
 
 - `file_path` (`str`): path of the dropped file.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_drop_text(text, window)`
+#### `on_drop_text(text, window)`
 Text was dropped onto the window.
 
 - `text` (`str`): the dropped text.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_finger_down(touch_id, finger_id, x, y, dx, dy, window)`
+#### `on_finger_down(touch_id, finger_id, x, y, dx, dy, window)`
 Touch began.
 
 - `touch_id` (`int`): the touch device.
@@ -243,7 +259,7 @@ Touch began.
 - `dy` (`float`): movement since the last event.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_finger_motion(touch_id, finger_id, x, y, dx, dy, window)`
+#### `on_finger_motion(touch_id, finger_id, x, y, dx, dy, window)`
 A touch moved.
 
 - `touch_id` (`int`): the touch device.
@@ -254,7 +270,7 @@ A touch moved.
 - `dy` (`float`): movement since the last event.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_finger_up(touch_id, finger_id, x, y, dx, dy, window)`
+#### `on_finger_up(touch_id, finger_id, x, y, dx, dy, window)`
 A touch ended.
 
 - `touch_id` (`int`): the touch device.
@@ -265,7 +281,7 @@ A touch ended.
 - `dy` (`float`): movement since the last event.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_multi_gesture(touch_id, x, y, pinched, rotated, num_fingers, window)`
+#### `on_multi_gesture(touch_id, x, y, pinched, rotated, num_fingers, window)`
 Pinch/rotate gesture.
 
 - `touch_id` (`int`): the touch device.
@@ -276,7 +292,7 @@ Pinch/rotate gesture.
 - `num_fingers` (`int`): number of fingers.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_text_editing(text, start, length, window)`
+#### `on_text_editing(text, start, length, window)`
 An IME composition is in progress.
 
 - `text` (`str`): the text being composed.
@@ -284,7 +300,7 @@ An IME composition is in progress.
 - `length` (`int`): length of the selection being edited.
 - `window` (`pygame.Window` | `None`): the window of the event.
 
-### `on_text_input(text, window)`
+#### `on_text_input(text, window)`
 A character was typed. Input boxes that have focus consume the text first.
 
 - `text` (`str`): the typed character.
@@ -292,99 +308,108 @@ A character was typed. Input boxes that have focus consume the text first.
 
 ## Audio device, app and misc hooks
 
-### `on_app_did_background()`
+#### `on_app_did_background()`
 The app went to the background (mobile).
 
-### `on_app_did_foreground()`
+#### `on_app_did_foreground()`
 The app returned to the foreground (mobile).
 
-### `on_app_low_memory()`
+#### `on_app_low_memory()`
 The OS is low on memory.
 
-### `on_app_terminating()`
+#### `on_app_terminating()`
 The OS is shutting the app down.
 
-### `on_app_will_background()`
+#### `on_app_will_background()`
 The app is about to go to the background (mobile).
 
-### `on_app_will_foreground()`
+#### `on_app_will_foreground()`
 The app is about to return to the foreground (mobile).
 
-### `on_audio_added(which, is_capture)`
+#### `on_audio_added(which, is_capture)`
 An audio device appeared.
 
 - `which` (`int`): index of the device.
 - `is_capture` (`bool`): `True` for a recording device.
 
-### `on_audio_removed(which, is_capture)`
+#### `on_audio_removed(which, is_capture)`
 An audio device disappeared.
 
 - `which` (`int`): index of the device.
 - `is_capture` (`bool`): `True` for a recording device.
 
-### `on_clipboard_update()`
+#### `on_clipboard_update()`
 The clipboard changed.
 
-### `on_keymap_changed()`
+#### `on_keymap_changed()`
 The keyboard layout changed.
 
-### `on_locale_changed()`
+#### `on_locale_changed()`
 The system language changed.
 
-### `on_render_device_reset()`
+#### `on_render_device_reset()`
 The render device was lost — reload textures if you use them directly.
 
-### `on_render_target_reset()`
+#### `on_render_target_reset()`
 The render target was lost — reload textures if you use them directly.
 
-### `on_user_event(event)`
+#### `on_user_event(event)`
 Any event that is not handled above, e.g. one posted with `pygame.event.post()`.
 
 - `event` (`pygame.event.Event`): the raw pygame event.
 
 ## Global functions
 
-### `get_delta_time()`
+#### `get_delta_time()`
 The duration of the last frame in seconds — the same `dt` that `on_update(dt)` receives. Handy inside event hooks, which have no `dt` parameter.
 
-### `get_elapsed_time()`
+#### `get_elapsed_time()`
 Seconds since the game started.
 
-### `get_fps()`
+#### `get_fps()`
 The frame rate the main loop targets (default `60`).
 
-### `get_frame_count()`
+#### `get_frame_count()`
 Number of frames drawn since the game started.
 
-### `get_mouse_position()`
+#### `get_mouse_position()`
 The pointer position `(x, y)` inside the window.
 
-### `get_pressed_buttons()`
+#### `get_pressed_buttons()`
 Pressed state of the mouse buttons: `(left, middle, right)`.
 
-### `get_pressed_keys()`
+#### `get_pressed_keys()`
 Tuple-like key state of the keyboard, indexed with the `studio.K_*` constants.
 
-### `get_screen()`
+#### `get_screen()`
 The surface the game renders to. Pass it to `studio.load_scene(screen)`; after `studio.set_window_size()` it returns the new surface automatically.
 
-### `is_key_pressed(key)`
+#### `hide_debug_info()`
+Hides the debug info panel (see `show_debug_info()`).
+
+#### `is_debug_info_enabled()`
+`True` while the debug info panel is shown.
+
+#### `is_key_pressed(key)`
 `True` while that key is held, e.g. `studio.is_key_pressed(studio.K_SPACE)`.
 
 - `key` (`int`): a `studio.K_*` constant.
 
-### `is_mouse_button_pressed(button=1)`
+#### `is_mouse_button_pressed(button=1)`
 `True` while that mouse button is held.
 
 - `button` (`int`): `1` left, `2` middle, `3` right.
 
-### `is_running()`
+#### `is_running()`
 `True` while the main loop is running.
 
-### `quit()`
+#### `quit()`
 Ends the game loop (`on_quit()` still runs).
 
-### `set_fps(value)`
+#### `set_fps(value)`
 Sets the target frame rate.
 
 - `value` (`int`): frames per second.
+
+#### `show_debug_info()`
+Shows the debug info: the running game draws a small panel in the bottom-left corner of the window with the measured **FPS**, the frame time in milliseconds and the number of objects in the current scene. Call it from `on_start()` — it can also be switched at any time while the game runs.

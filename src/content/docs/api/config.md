@@ -3,33 +3,45 @@ title: Project Config
 description: Read the project settings of a game at runtime — window size, caption, current scene and build options.
 ---
 
+**How it is used:** `studio.get_project_config()` at start-up, usually in `main.py`.
+
+```python
+import pygamestudio as studio
+
+class Game(studio.Game):
+    def on_start(self):
+        config = studio.get_project_config()
+        studio.set_window_title(config['caption'])
+        print(config['screen_width'], config['screen_height'])
+```
+
 ## Function
 
-### `get_project_config()`
+#### `get_project_config()`
 Returns the whole settings dictionary of the project. Raises `RuntimeError` when `project.pygs` cannot be found or read — this only happens when the file was moved or edited by hand outside the editor. The file lives in the project root; in a [protected build](/tutorial/build_game/) it is encrypted and decrypted on the fly, so reading it works exactly the same.
 
-### `get_project_path()`
+#### `get_project_path()`
 Path of the current project root; `''` when not running inside a project.
 
 ## Settings
 
-### `asset`
+#### `asset`
 Asset panel settings (`current_scene`, `sort_type`). Type `dict`.
 
-### `asset.current_scene`
+#### `asset.current_scene`
 Path of the scene loaded when `studio.load_scene()` is called without a path. Type `str`.
 
-### `asset.sort_type`
+#### `asset.sort_type`
 Sort order of the asset panel — editor only. Type `int`.
 
-### `build`
+#### `build`
 Options of the [Build window](/tutorial/build_game/): `app_name`, `app_icon`, `output_dir`. Type `dict`.
 
-### `caption`
+#### `caption`
 The project name. It is the initial window title and the default application name for a build. Type `str`.
 
-### `screen_size`
+#### `screen_size`
 `[screen_width, screen_height]` — the size passed to `pygame.display.set_mode()`. Type `list`.
 
-### `screen_width`, `screen_height`
+#### `screen_width`, `screen_height`
 Window width and height in pixels. Type `int`.

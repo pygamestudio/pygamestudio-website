@@ -9,9 +9,31 @@
  *   src/content/docs/v1.0.0/tutorial/installation.md
  *   src/content/docs/zh-cn/v1.0.0/tutorial/installation.md
  *
+ * and, only when that release needs its own sidebar tweaks, an empty
+ * `src/sidebars/v1.0.0.mjs` to fill in later.
+ *
  * Any docs folder whose name starts with a digit (optionally prefixed with `v`,
  * e.g. `v1.0.0`) is detected automatically and shows up in the version selector
  * in the header (newest first). Nothing else has to be configured.
+ *
+ * Two other things follow the same folder name:
+ *
+ * - the sidebar and the previous/next links: `src/data/versioned-sidebar.ts`
+ *   hides the entries a version does not publish (checked against
+ *   `publishedPages()` below) and walks what is left to get the neighbouring
+ *   pages, so the one hand-written sidebar in `astro.config.mjs` serves every
+ *   release. A release that needs a different order, different link text or a
+ *   page the shared list does not mention adds `src/sidebars/<version>.mjs`
+ *   (`hide` / `rename` / `move` / `extra` - see `src/sidebars/README.md`);
+ *   without such a file it simply follows the shared sidebar;
+ * - the pictures: `src/plugins/remark-versioned-images.mjs` points the images of
+ *   an archived page at `/images/<version>/...`, i.e. at that release's own copy
+ *   under `public/images/<version>/`, so replacing a screenshot in the newest
+ *   docs never changes an older release;
+ * - the pages listed in `src/data/shared-pages.json` (release notes, support)
+ *   are the same in every release: `scripts/sync-shared-docs.mjs` copies the
+ *   root file into every archived folder before `dev` / `build`, so an archived
+ *   address shows the newest text while the reader stays in that release.
  *
  * The docs are discovered with `import.meta.glob` instead of the file system so
  * the same code works while developing and while prerendering the site.
@@ -39,7 +61,7 @@ const RELEASE_NOTES = Object.values(
  * the release that is being frozen. Leave it empty to fall back to the newest
  * `## [vX.Y.Z]` heading of the release notes instead.
  */
-export const CURRENT_RELEASE = 'v1.0.0';
+export const CURRENT_RELEASE = 'v1.0.2';
 
 /** A docs folder that is an archived release, e.g. `v1.0.0` or `1.0.0.dev6`. */
 const VERSION_FOLDER = /^v?\d/;
@@ -51,6 +73,14 @@ const VERSION_FOLDER = /^v?\d/;
  * docs are translated into another language.
  */
 export const LOCALES = ['zh-cn'];
+
+/*
+ * Pages that are the same in every release (release notes, support): they are
+ * written once in the root docs and copied into every version folder by
+ * `scripts/sync-shared-docs.mjs`, which reads `src/data/shared-pages.json`.
+ * Nothing in this file needs the list - it is mentioned so the two files are
+ * easy to find. To share another page, add its version-less slug to that JSON.
+ */
 
 export interface DocsVersion {
 	/** URL segment of the archive, empty for the current release. */
@@ -139,22 +169,17 @@ export function publishedPages(): Set<string> {
 /**
  * Best URL for the reader's current page inside `version`.
  *
- * The same page is used when that version has it; otherwise the closest parent
- * page, and finally that version's installation guide. This keeps a link
- * working after pages are added or renamed in newer versions.
+ * The same page is used when that version has it. Otherwise the reader is sent
+ * to that version's installation guide (`/v1.0.1/tutorial/installation/`), or
+ * to its docs root when even that is missing - switching versions never leaves
+ * an address that the target release does not publish.
  */
 export function resolveVersionPage(pathname: string, version: string): string {
 	const pages = publishedPages();
-	const segments = parseDocsPath(pathname).page.split('/').filter(Boolean);
-	const candidates: string[] = [];
-	while (segments.length > 0) {
-		candidates.push(segments.join('/'));
-		segments.pop();
-	}
-	candidates.push('tutorial/installation', '');
-	for (const page of candidates) {
-		const href = versionHref(pathname, version, page);
-		if (page === '' || pages.has(href)) return href;
-	}
-	return versionHref(pathname, version, '');
+	const { page } = parseDocsPath(pathname);
+	const href = versionHref(pathname, version, page);
+	if (page === '' || pages.has(href)) return href;
+
+	const start = versionHref(pathname, version, 'tutorial/installation');
+	return pages.has(start) ? start : versionHref(pathname, version, '');
 }

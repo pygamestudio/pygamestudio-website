@@ -3,9 +3,23 @@ title: Scene
 description: Load and switch scenes, find objects by path or uuid, create and destroy objects while the game runs, and walk the object hierarchy.
 ---
 
+**How it is used:** `studio.…` from `main.py` or from an object script.
+
+```python
+import pygamestudio as studio
+
+class Game(studio.Game):
+    def on_start(self):
+        player = studio.get_object_by_path('Canvas/Player')
+        print(player.get_pos())
+
+    def on_update(self, dt):
+        studio.load_scene(studio.get_screen())
+```
+
 ## Loading a scene
 
-### `load_scene(screen_surface, scene_path='')`
+#### `load_scene(screen_surface, scene_path='')`
 Draws the current scene onto the given surface, and loads it first when it is not the scene that is currently loaded. Call it once per frame from `Game.on_update`.
 
 - `screen_surface` (`pygame.Surface`): the surface from `studio.get_screen()`.
@@ -15,17 +29,17 @@ Calling it again with the same file only redraws it (the scripts' `on_update(dt)
 
 ## Finding objects
 
-### `get_object_by_path(object_path)`
+#### `get_object_by_path(object_path)`
 The object with the given hierarchy path, or `None`. The positional form is fragile — adding, deleting or reordering objects changes the position numbers.
 
 - `object_path` (`str`): the names from the canvas down, separated by `/`.
 
-### `get_object_by_uuid(object_uuid)`
+#### `get_object_by_uuid(object_uuid)`
 The object with the given uuid, or `None`.
 
 - `object_uuid` (`str`): the uuid of the object.
 
-### `get_parent_object(object_uuid)`
+#### `get_parent_object(object_uuid)`
 The parent object of a uuid, or `None` for the canvas.
 
 - `object_uuid` (`str`): the uuid of the object.
@@ -41,7 +55,7 @@ The parent object of a uuid, or `None` for the canvas.
 
 ## Walking the hierarchy
 
-### `find_objects(name='', object_type='', script='', visible_only=False)`
+#### `find_objects(name='', object_type='', script='', visible_only=False)`
 Every object matching the filters; an empty filter means "any".
 
 - `name` (`str`): text the name contains (case-insensitive).
@@ -49,23 +63,23 @@ Every object matching the filters; an empty filter means "any".
 - `script` (`str`): text the script path contains (e.g. `'player.py'`).
 - `visible_only` (`bool`): skip hidden objects.
 
-### `get_all_objects()`
+#### `get_all_objects()`
 Every object of the scene, root first (tree order).
 
-### `get_children(obj)`
+#### `get_children(obj)`
 The direct children of an object.
 
 - `obj` (`object` | `str`): the object itself, its uuid, its path or its name.
 
-### `get_root_object()`
+#### `get_root_object()`
 The root object of the scene (the canvas), or `None` when no scene is loaded.
 
-### `get_scene_path()`
+#### `get_scene_path()`
 The scene file that is loaded right now, `''` when there is none.
 
 ## Creating objects while the game runs
 
-### `create_object(object_type, parent='', name='', properties=None)`
+#### `create_object(object_type, parent='', name='', properties=None)`
 Creates an object in the running scene and returns it; an unknown type or a parent that cannot be found raises a `RuntimeError`. The new object behaves exactly like one that was in the scene from the start: its script is attached, `on_start()` fires right away, and it is updated and drawn from the next frame on.
 
 - `object_type` (`str`): the type key of the [object reference](/api/objects/) — `RECT`, `TEXT`, `IMAGE`, `BUTTON`, `FRAME_SEQUENCE`, ….
@@ -73,14 +87,14 @@ Creates an object in the running scene and returns it; an unknown type or a pare
 - `name` (`str`): the name shown in the Hierarchy panel.
 - `properties` (`dict`): initial values using the same names as the inspector and the `.scene` file (`x`, `y`, `width`, `height`, `color`, `text`, `image_path`, `script_path`, …); everything left out falls back to the default of that type.
 
-### `duplicate_object(obj)`
+#### `duplicate_object(obj)`
 Duplicate an object (with its whole subtree) while the game runs and return the copy. The copy sits right after the original under the same parent; properties, children, script and name are kept and only the uuids are fresh. Its scripts' `on_start()` fires right away and it is updated/drawn from the next frame on.
 
 - `obj` (`object` | `str`): the object to duplicate; returns `None` when it is not part of the running scene or is the scene root.
 
 ## Removing objects while the game runs
 
-### `destroy_object(obj)`
+#### `destroy_object(obj)`
 Removes an object and its children. Returns `False` when there is nothing to destroy. The object leaves the scene at the **end of the current frame**, so a script may destroy anything — including the object it is attached to — while the frame is still running; the `on_destroy()` hooks of the removed scripts fire when it actually leaves.
 
 - `obj` (`object` | `str`): the object itself, its uuid, its hierarchy path or its name.

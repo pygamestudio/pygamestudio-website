@@ -2,7 +2,7 @@
 title: 音频编辑器
 ---
 
-**音频播放器（Audio Player）** 可以让你在编辑器里直接试听项目中的音频。在[资源管理器](/zh-cn/editor_introduction/asset/)中双击音频文件，它就会在窗口底部打开。
+**音频编辑器（Audio Player）** 可以让你在编辑器里直接试听项目中的音频。在[资源管理器](/zh-cn/editor_introduction/asset/)中双击音频文件，它就会在窗口底部打开。
 
 ![音频播放器](/images/doc/audio_editor_window.png)
 

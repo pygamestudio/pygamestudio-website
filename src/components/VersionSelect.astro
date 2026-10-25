@@ -9,13 +9,19 @@
  * target version.
  */
 import Select from '@astrojs/starlight/components/Select.astro';
-import { getVersions, parseDocsPath, resolveVersionPage } from '../data/versions';
+import { getVersions, parseDocsPath, publishedPages, resolveVersionPage } from '../data/versions';
 
 const { version: activeVersion, page, locale } = parseDocsPath(Astro.url.pathname);
 const t = (en: string, zh: string) => (locale === 'zh-cn' ? zh : en);
 
-/** The selector only makes sense on documentation pages. */
-const inDocs = activeVersion !== '' || /^(tutorial|editor_introduction|api|updates_and_support)(\/|$)/.test(page);
+/**
+ * The selector belongs on every documentation page, whatever folder it lives in
+ * (a new section such as `platform/` is a docs page as much as `tutorial/` is),
+ * but not on the home page, the 404 page or anything else Starlight renders
+ * outside the docs collection.
+ */
+const pathname = `${Astro.url.pathname.replace(/\/+$/, '')}/`;
+const inDocs = pathname !== '/' && !pathname.startsWith('/404') && publishedPages().has(pathname);
 
 // A folder holding the same release as the root is only listed while the reader
 // is actually inside it, so the same docs are never offered twice.

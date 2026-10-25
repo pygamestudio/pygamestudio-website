@@ -42,3 +42,20 @@
 .sidebar-content details details summary:focus-visible .group-label .large {
 	color: var(--sl-color-white);
 }
+
+/* ------------------------------------------------------------------------- *
+ * Sponsor icons
+ *
+ * The Ko-fi and Afdian logos on the support page sit in front of the links.
+ * They come in different sizes (80x80 and 161x130), so they are fitted into a
+ * small square box and aligned with the text around them.
+ * ------------------------------------------------------------------------- */
+
+.ps-sponsor-icon {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	object-fit: contain;
+	vertical-align: -0.25em;
+	margin-inline-end: 0.35em;
+}

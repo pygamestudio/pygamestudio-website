@@ -3,9 +3,23 @@ title: 场景
 description: 加载与切换场景，按路径或 uuid 查找对象，在游戏运行时创建与移除对象，遍历对象层级。
 ---
 
+**使用方式：** 在 `main.py`或对象脚本里以 `studio.…` 调用。
+
+```python
+import pygamestudio as studio
+
+class Game(studio.Game):
+    def on_start(self):
+        player = studio.get_object_by_path('Canvas/Player')
+        print(player.get_pos())
+
+    def on_update(self, dt):
+        studio.load_scene(studio.get_screen())
+```
+
 ## 加载场景
 
-### `load_scene(screen_surface, scene_path='')`
+#### `load_scene(screen_surface, scene_path='')`
 把当前场景绘制到给定画面上；如果它还不是已加载的场景，则先加载它。请在 `Game.on_update` 中每帧调用一次。
 
 - `screen_surface`（`pygame.Surface`）：`studio.get_screen()` 得到的画面。
@@ -15,17 +29,17 @@ description: 加载与切换场景，按路径或 uuid 查找对象，在游戏�
 
 ## 查找对象
 
-### `get_object_by_path(object_path)`
+#### `get_object_by_path(object_path)`
 按层级路径查找对象，找不到返回 `None`。带序号的形式比较脆弱——新增、删除或调整对象顺序都会改变序号。
 
 - `object_path`（`str`）：从画布开始、自上而下的对象名称链，用 `/` 分隔。
 
-### `get_object_by_uuid(object_uuid)`
+#### `get_object_by_uuid(object_uuid)`
 按 uuid 查找对象，找不到返回 `None`。
 
 - `object_uuid`（`str`）：对象的 uuid。
 
-### `get_parent_object(object_uuid)`
+#### `get_parent_object(object_uuid)`
 返回某个 uuid 的父对象；画布没有父对象，返回 `None`。
 
 - `object_uuid`（`str`）：对象的 uuid。
@@ -41,7 +55,7 @@ description: 加载与切换场景，按路径或 uuid 查找对象，在游戏�
 
 ## 遍历层级
 
-### `find_objects(name='', object_type='', script='', visible_only=False)`
+#### `find_objects(name='', object_type='', script='', visible_only=False)`
 按条件查找对象；留空表示该条件不限。
 
 - `name`（`str`）：名称包含的文本（不区分大小写）。
@@ -49,23 +63,23 @@ description: 加载与切换场景，按路径或 uuid 查找对象，在游戏�
 - `script`（`str`）：脚本路径包含的文本（如 `'player.py'`）。
 - `visible_only`（`bool`）：只返回可见对象。
 
-### `get_all_objects()`
+#### `get_all_objects()`
 场景中的全部对象，根对象在最前（按树的顺序）。
 
-### `get_children(obj)`
+#### `get_children(obj)`
 某个对象的直接子对象。
 
 - `obj`（`object` | `str`）：对象本身、uuid、路径或名称。
 
-### `get_root_object()`
+#### `get_root_object()`
 场景的根对象（画布）；未加载场景时返回 `None`。
 
-### `get_scene_path()`
+#### `get_scene_path()`
 当前加载的场景文件路径，未加载时为空字符串。
 
 ## 运行时创建对象
 
-### `create_object(object_type, parent='', name='', properties=None)`
+#### `create_object(object_type, parent='', name='', properties=None)`
 在运行中的场景里创建一个对象并返回它；类型不存在或找不到父对象时会抛出 `RuntimeError`。新对象的行为与一开始就在场景中的对象完全一致：脚本会立即挂载并触发 `on_start()`，从下一帧开始参与更新与绘制。
 
 - `object_type`（`str`）：[对象参考](/zh-cn/api/objects/)中的类型标识——`RECT`、`TEXT`、`IMAGE`、`BUTTON`、`FRAME_SEQUENCE`……。
@@ -73,14 +87,14 @@ description: 加载与切换场景，按路径或 uuid 查找对象，在游戏�
 - `name`（`str`）：层级面板中显示的名称。
 - `properties`（`dict`）：初始属性字典，名称与属性检查器、`.scene` 文件一致（`x`、`y`、`width`、`height`、`color`、`text`、`image_path`、`script_path`……）；未填写的按该类型的默认值处理。
 
-### `duplicate_object(obj)`
+#### `duplicate_object(obj)`
 在游戏运行时复制一个对象（连同它的全部子对象）并返回副本。副本位于原对象之后、同一个父对象下，属性、子对象、脚本与名称都会保留，只有 uuid 是新的；它的脚本会立即触发 `on_start()`，从下一帧开始更新与绘制。
 
 - `obj`（`object` | `str`）：要复制的对象；不是运行中场景里的对象或场景根对象时返回 `None`。
 
 ## 运行时移除对象
 
-### `destroy_object(obj)`
+#### `destroy_object(obj)`
 移除一个对象连同它的子对象；没有可移除的对象时返回 `False`。对象会在**当前帧结束时**真正离开场景，因此脚本可以安全地移除任何对象——包括它自己挂载的那个；脚本的 `on_destroy()` 会在对象真正移除时触发。
 
 - `obj`（`object` | `str`）：对象本身、uuid、层级路径或名称。
