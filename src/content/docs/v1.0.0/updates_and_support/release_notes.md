@@ -1,6 +1,33 @@
 ---
 title: Release Notes
 ---
+## [v1.0.2](https://pypi.org/project/pygamestudio/1.0.2/) - 2026.10.25
+### New Features
+- Added image thumbnails below keyframes in the animation editor
+- Added more shortcut keys
+- Added QR code preview function for web app package
+- Added touch event support
+- Added resize image function in the image editor
+- Added adaptation for Bilibili Toy platform
+- Added adaptation for TapTap PC platform
+- Added MCP tool `capture_game_window` to capture the running game window for screen analysis
+- Added runtime debug info for games, which can be displayed by calling `show_debug_info()`
+
+### Optimizations
+- Adjusted the height of rename input box in Hierarchy and Asset Manager
+- Improved the selection visual effect of blocks in the block editor
+- Optimized web packaging: clear previous build output before each packaging
+- Optimized build process: removed obfuscation, encryption is still retained
+- Improved code editor auto-completion, trigger suggestions immediately after typing `.`
+- Optimized Hierarchy Manager to reduce lag when there are many nodes
+- Improved the display of search results in the code editor
+
+### Bug Fixes
+- Fixed the bug that the cursor turns to resize style when typing in code editor
+- Fixed the bug where color block parameters are converted to string when transpiling block code
+
+<br>
+
 ## [v1.0.1](https://pypi.org/project/pygamestudio/1.0.1/) - 2026.10.07
 ### New Features
 - Add keyframe animation object
