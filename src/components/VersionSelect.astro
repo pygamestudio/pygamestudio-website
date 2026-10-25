@@ -9,7 +9,7 @@
  * target version.
  */
 import Select from '@astrojs/starlight/components/Select.astro';
-import { getVersions, parseDocsPath, publishedPages, resolveVersionPage } from '../data/versions';
+import { LOCALES, getVersions, parseDocsPath, publishedPages, resolveVersionPage } from '../data/versions';
 
 const { version: activeVersion, page, locale } = parseDocsPath(Astro.url.pathname);
 const t = (en: string, zh: string) => (locale === 'zh-cn' ? zh : en);
@@ -17,11 +17,15 @@ const t = (en: string, zh: string) => (locale === 'zh-cn' ? zh : en);
 /**
  * The selector belongs on every documentation page, whatever folder it lives in
  * (a new section such as `platform/` is a docs page as much as `tutorial/` is),
- * but not on the home page, the 404 page or anything else Starlight renders
- * outside the docs collection.
+ * but not on a home page, the 404 page or anything else outside the docs.
+ *
+ * Each language has its own home page (`/` and `/zh-cn/`): they are docs pages
+ * as far as the content collection is concerned, yet they carry no version, so
+ * they are excluded by path.
  */
 const pathname = `${Astro.url.pathname.replace(/\/+$/, '')}/`;
-const inDocs = pathname !== '/' && !pathname.startsWith('/404') && publishedPages().has(pathname);
+const homePages = new Set(['/', ...LOCALES.map((name) => `/${name}/`)]);
+const inDocs = !homePages.has(pathname) && !pathname.startsWith('/404') && publishedPages().has(pathname);
 
 // A folder holding the same release as the root is only listed while the reader
 // is actually inside it, so the same docs are never offered twice.
