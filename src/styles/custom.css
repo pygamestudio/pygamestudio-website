@@ -59,3 +59,26 @@
 	vertical-align: -0.25em;
 	margin-inline-end: 0.35em;
 }
+
+/* ------------------------------------------------------------------------- *
+ * Sponsor list
+ *
+ * A plain HTML table under the thank-you line of the support page. Starlight
+ * makes markdown tables full width, so this one is switched back to real table
+ * layout and centred; it keeps a comfortable width (most of the text column,
+ * capped so it never stretches on a wide screen) and roomy cells.
+ * ------------------------------------------------------------------------- */
+
+.sl-markdown-content table.ps-sponsor-table {
+	display: table;
+	width: min(100%, 36rem);
+	max-width: 100%;
+	margin-inline: auto;
+	border-collapse: collapse;
+}
+
+.sl-markdown-content table.ps-sponsor-table :is(th, td) {
+	text-align: center;
+	padding-block: 0.6rem;
+	padding-inline: 1.25rem;
+}
