@@ -43,6 +43,9 @@ description: 通过"项目 → 打包"把项目打包成独立的桌面应用程
 
 把打包好的内容上传到任意静态托管（GitHub Pages、Netlify、普通 Web 服务器）即可发布游戏。每个控件与加载流程详见[打包窗口](/zh-cn/editor_introduction/build_window/)页面。
 
+## 安卓应用打包
+请参考[安卓应用打包](/zh-cn/editor_introduction/build_window/)文档
+
 ## 打包失败时
 
 | 日志或弹窗 | 含义 |

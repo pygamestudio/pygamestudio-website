@@ -1,6 +1,22 @@
 ---
 title: Release Notes
 ---
+## [v1.0.3](https://pypi.org/project/pygamestudio/1.0.3/) - 2026.11.01
+### New Features
+- Added Android packaging function
+- Added screen adaptation function
+
+### Optimizations
+- Changed default canvas size to 1280 * 720
+- Adapted engine UI for PySide6.12.0
+- Optimized Agent thinking speed
+- Optimized web packaging display: support splash image, hide progress bar and title on game canvas
+
+### Bug Fixes
+- Fixed format issue when inserting user questions from AI assistant
+
+<br>
+
 ## [v1.0.2](https://pypi.org/project/pygamestudio/1.0.2/) - 2026.10.25
 ### New Features
 - Added image thumbnails below keyframes in the animation editor

@@ -142,6 +142,8 @@ export default defineConfig({
 						{ slug: 'editor_introduction/inspector' },	
 						{ slug: 'editor_introduction/ai_agent' },
 						{ slug: 'editor_introduction/build_window' },
+						{ slug: 'editor_introduction/project_settings' },
+						{ slug: 'editor_introduction/editor_settings' },
 					],
 				},
 				{

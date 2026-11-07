@@ -5,7 +5,7 @@ title: 安装
 本文将演示如何下载安装 **Pygame Studio** 并验证安装是否成功。
 
 ## 前置要求
-请确保你的电脑已安装 **Python 3.9 及以上版本**。
+请确保你的电脑已安装 **Python 3.10 及以上版本**。
 
 你可以在终端中运行以下命令，查看当前 Python 版本：
 
@@ -24,13 +24,13 @@ pip install pygamestudio
 
 | 依赖库名称 | 要求版本 |
 |-----|-----|
-| pygame-ce | >=2.5.6 |
-| PySide6 | >=6.10.0 | 
-| platformdirs | >=3.5.1 | 
-| numpy | >=1.26.0 | 
-| soundfile | >=0.13.1 |
-| pyinstaller | >=6.18.0 | 
-| pymunk | >=7.0 | 
+| pygame-ce | >=2.5.8 |
+| PySide6 | >=6.12.0 | 
+| platformdirs | >=4.12.4 | 
+| numpy | >=2.2.6 | 
+| pyinstaller | >=6.22.3 |
+| soundfile | >=0.14.0 |
+| pymunk | >=7.3.1 |
 
 ## 验证安装是否成功
 安装完成后，在终端输入以下命令：

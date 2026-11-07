@@ -5,7 +5,7 @@ title: Installation
 This guide will walk you through installing **Pygame Studio** and verifying the installation on your system.
 
 ## Prerequisites
-Ensure you have **Python 3.9 or higher** installed on your machine.
+Ensure you have **Python 3.10 or higher** installed on your machine.
 
 You can check your Python version by running this command in your terminal:
 
@@ -24,13 +24,13 @@ This command will automatically download and install the latest stable version o
 
 | Name | Version |
 |-----|-----|
-| pygame-ce | >=2.5.6 |
-| PySide6 | >=6.10.0 | 
-| platformdirs | >=3.5.1 | 
-| numpy | >=1.26.0 | 
-| soundfile | >=0.13.1 |
-| pyinstaller | >=6.18.0 |
-| pymunk | >=7.0 | 
+| pygame-ce | >=2.5.8 |
+| PySide6 | >=6.12.0 | 
+| platformdirs | >=4.12.4 | 
+| numpy | >=2.2.6 | 
+| pyinstaller | >=6.22.3 |
+| soundfile | >=0.14.0 |
+| pymunk | >=7.3.1 |
 
 ## Verify the Installation
 After installation, run the following command in your terminal:

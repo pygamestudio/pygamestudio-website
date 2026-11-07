@@ -37,11 +37,47 @@ Sort order of the asset panel — editor only. Type `int`.
 #### `build`
 Options of the [Build window](/tutorial/build_game/): `app_name`, `app_icon`, `output_dir`. Type `dict`.
 
+#### `build.android_build_type`
+Build type of the [Android build](/editor_introduction/build_window/): `debug` or `release`. Type `str`.
+
+#### `build.android_key_alias`
+Alias of the key pair inside the release keystore. Type `str`.
+
+#### `build.android_keystore`
+Path of the release keystore (`.jks` / `.keystore`). The two passwords are editor settings on this machine and never part of the project. Type `str`.
+
+#### `build.android_orientation`
+Screen orientation: `sensor_landscape` (landscape, flips 180°) or `sensor_portrait` (portrait, flips 180°). Type `str`.
+
+#### `build.android_package`
+Android package name, like `org.pygamestudio.mygame`. Type `str`.
+
+#### `build.android_version_code`
+Android version code (an integer that has to grow with every store update). Type `int`.
+
+#### `build.android_version_name`
+Android version name, e.g. `1.0.0`. Type `str`.
+
 #### `caption`
 The project name. It is the initial window title and the default application name for a build. Type `str`.
+
+#### `desktop_display_mode`
+How a desktop run fits the canvas: `window` (the canvas at its own size in a window, the default) or `fixed_width` / `fixed_height` / `exact_fit` (full screen, scaled that way). Type `str`.
+
+#### `screen_scale_filter`
+Scaling algorithm used whenever the canvas is scaled: `nearest` (default, keeps pixel art crisp) or `smooth`. Type `str`.
+
+#### `screen_scale_mode`
+How a phone fits the canvas into the screen: `fixed_width` (default), `fixed_height`, `exact_fit` or `none` (1:1, no scaling). Values from older projects are mapped to one of these. Type `str`.
+
+#### `screen_scaled`
+`false` turns canvas scaling off on phones entirely. Type `bool`.
 
 #### `screen_size`
 `[screen_width, screen_height]` — the size passed to `pygame.display.set_mode()`. Type `list`.
 
 #### `screen_width`, `screen_height`
 Window width and height in pixels. Type `int`.
+
+#### `web_scale_mode`
+How the web build scales the canvas on the page: `none` (default — canvas at its own size, centred), `fixed_width`, `fixed_height` or `exact_fit`. Type `str`.

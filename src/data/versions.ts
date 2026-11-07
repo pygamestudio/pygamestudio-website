@@ -61,7 +61,7 @@ const RELEASE_NOTES = Object.values(
  * the release that is being frozen. Leave it empty to fall back to the newest
  * `## [vX.Y.Z]` heading of the release notes instead.
  */
-export const CURRENT_RELEASE = 'v1.0.2';
+export const CURRENT_RELEASE = 'v1.0.3';
 
 /** A docs folder that is an archived release, e.g. `v1.0.0` or `1.0.0.dev6`. */
 const VERSION_FOLDER = /^v?\d/;
