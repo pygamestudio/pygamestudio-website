@@ -46,18 +46,41 @@
 /* ------------------------------------------------------------------------- *
  * Sponsor icons
  *
- * The Ko-fi and Afdian logos on the support page sit in front of the links.
- * They come in different sizes (80x80 and 161x130), so they are fitted into a
- * small square box and aligned with the text around them.
+ * The Afdian, Ko-fi and WeChat logos on the support page sit in front of the
+ * links. They come in different sizes (80x80, 161x130 and 128x128), so they
+ * are fitted into a small square box and aligned with the text around them.
+ *
+ * Scoped and with both margins reset: Starlight makes markdown images block
+ * level and gives the last element of a list item a bottom margin, which would
+ * otherwise push the text of the WeChat entry onto a second line.
  * ------------------------------------------------------------------------- */
 
-.ps-sponsor-icon {
+.sl-markdown-content .ps-sponsor-icon {
 	display: inline-block;
 	width: 1.25em;
 	height: 1.25em;
 	object-fit: contain;
 	vertical-align: -0.25em;
+	margin-block: 0;
 	margin-inline-end: 0.35em;
+}
+
+/* ------------------------------------------------------------------------- *
+ * WeChat sponsor QR code
+ *
+ * Sits under the sponsor list on the support page. The picture is a square
+ * poster, so it is capped to a phone-friendly width and kept on a white card
+ * so the code stays scannable in the dark theme as well.
+ * ------------------------------------------------------------------------- */
+
+.ps-sponsor-qr {
+	display: block;
+	width: min(100%, 18rem);
+	height: auto;
+	margin-block: 0.75rem 1.5rem;
+	margin-inline: auto;
+	border-radius: 0.75rem;
+	background: #fff;
 }
 
 /* ------------------------------------------------------------------------- *
